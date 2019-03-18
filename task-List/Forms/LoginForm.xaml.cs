@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace task_List.Forms
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for LoginForm.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class LoginForm : Window
     {
-        public Window1()
+        public LoginForm()
         {
             InitializeComponent();
         }
