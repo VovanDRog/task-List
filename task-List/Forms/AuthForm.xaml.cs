@@ -61,8 +61,11 @@ namespace task_List.Forms
         {
             if (Password1.Text == String.Empty)
             {
+
                 pass1.Content = "Login";
+                //перевірка
             }
+
         }
 
         private void Name_TextChanged(object sender, TextChangedEventArgs e)
