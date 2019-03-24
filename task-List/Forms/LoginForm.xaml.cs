@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net.Sockets;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace task_List.Forms
 {
@@ -22,6 +12,21 @@ namespace task_List.Forms
         public LoginForm()
         {
             InitializeComponent();
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Login.Text != "" && Password.Text != "")
+            {
+                using (TcpClient tcpClient = new TcpClient("127.0.0.1", 8888))
+                {
+                    NetworkStream stream = tcpClient.GetStream();
+                    Byte[] data = System.Text.Encoding.ASCII.GetBytes(Login.Text);
+
+                    stream.Write(data, 0, data.Length);
+                    Console.WriteLine("Sent: {0}", Login.Text);
+                }
+            }        
         }
     }
 }
