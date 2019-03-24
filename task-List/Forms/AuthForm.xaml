@@ -5,8 +5,73 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:task_List.Forms"
         mc:Ignorable="d"
-        Title="AuthForm" Height="450" Width="800">
-    <Grid>
-        
+        Title="AuthForm" Height="409.45" Width="288.064">
+    <Grid Margin="0,0,30,0">
+        <TextBox 
+            x:Name="Login" 
+            HorizontalAlignment="Left" 
+            Height="30" 
+            Margin="42,44,0,0" 
+            TextWrapping="Wrap" 
+            Text="" 
+            VerticalAlignment="Top" 
+            Width="179" 
+            FontSize="20" 
+            FontFamily="Times New Roman"
+            MouseEnter="Login_MouseEnter"
+            MouseLeave="Login_MouseLeave"
+            TextChanged="Login_TextChanged"
+            />
+        <TextBox 
+            x:Name="Name" 
+            HorizontalAlignment="Left" 
+            Height="30" 
+            Margin="42,112,0,0" 
+            TextWrapping="Wrap" 
+            Text="" 
+            VerticalAlignment="Top" 
+            Width="179" 
+            FontSize="20" 
+            FontFamily="Times New Roman"
+            MouseEnter="Name_MouseEnter"
+            MouseLeave="Name_MouseLeave" 
+            TextChanged="Name_TextChanged"
+            />
+        <TextBox 
+            x:Name="Password1" 
+            HorizontalAlignment="Left" 
+            Height="30" 
+            Margin="42,194,0,0" 
+            TextWrapping="Wrap" 
+            Text="" 
+            VerticalAlignment="Top" 
+            Width="179" 
+            FontSize="20" 
+            FontFamily="Times New Roman"
+            TextChanged="Password1_TextChanged"
+            MouseEnter="Password1_MouseEnter"
+            MouseLeave="Password1_MouseLeave"
+            />
+        <TextBox 
+            x:Name="Password2" 
+            HorizontalAlignment="Left" 
+            Height="30" 
+            Margin="42,271,0,0" 
+            TextWrapping="Wrap" 
+            Text="" 
+            VerticalAlignment="Top" 
+            Width="179" 
+            FontSize="20" 
+            FontFamily="Times New Roman"
+            MouseEnter="Password2_MouseEnter"
+            MouseLeave="Password2_MouseLeave"
+            TextChanged="Password2_TextChanged"
+            />
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="53,322,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <Label x:Name="Log" Content="Login" HorizontalAlignment="Left" Margin="42,48,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Times New Roman" Foreground="#FF898989"/>
+        <Label x:Name="name_l" Content="Name" HorizontalAlignment="Left" Margin="42,112,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Times New Roman" Foreground="#FF898989"/>
+        <Label x:Name="pass1" Content="Password" HorizontalAlignment="Left" Margin="42,198,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Times New Roman" Foreground="#FF898989"/>
+        <Label x:Name="pass2" Content="Password" HorizontalAlignment="Left" Margin="42,271,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Times New Roman" Foreground="#FF898989"/>
+
     </Grid>
 </Window>
