@@ -10,96 +10,71 @@ namespace task_List.Forms
     /// </summary>
     public partial class LoginForm : Window
     {
+        private NetworkStream stream;
+        bool isSomethingHaveError = false;
+
         public LoginForm()
         {
             InitializeComponent();
+
+            loginErrorLabel.Visibility = passwordErrorLabel.Visibility = Visibility.Hidden;
+           // tryConnectToServer();
+        }
+
+        private void tryConnectToServer()
+        {
+            try
+            {
+                TcpClient tcpClient = new TcpClient("127.0.0.1", 8888);
+                stream = tcpClient.GetStream();
+                // Byte[] data = System.Text.Encoding.ASCII.GetBytes(Login.Text);
+                // stream.Write(data, 0, data.Length);
+                // Console.WriteLine("Sent: {0}", Login.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Login.Text != "" && Password.Text != "")
+            if (loginTextBox.Text != "" && passwordTextBox.Text != "" && !isSomethingHaveError)
             {
-                using (TcpClient tcpClient = new TcpClient("127.0.0.1", 8888))
-                {
-                    NetworkStream stream = tcpClient.GetStream();
-                    Byte[] data = System.Text.Encoding.ASCII.GetBytes(Login.Text);
-
-                    stream.Write(data, 0, data.Length);
-                    Console.WriteLine("Sent: {0}", Login.Text);
-                }
+                MessageBox.Show( "Submit");
             }
+            else MessageBox.Show("Not submit");
         }
 
 
         private void Login_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             string pattern = @"^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$";
-            string log = Login.Text;
+            string log = loginTextBox.Text;
 
-            if (Regex.IsMatch(log, pattern, RegexOptions.IgnoreCase))
+            if (!Regex.IsMatch(log, pattern, RegexOptions.IgnoreCase))
             {
-                test.Content = "gud";
-            }
-            else
+                loginErrorLabel.Content = "bad";
+                loginErrorLabel.Visibility = Visibility.Visible;
+            } else
             {
-                test.Content = "bead";
+                loginErrorLabel.Visibility = Visibility.Hidden;
             }
-
-
         }
         private void Password_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-
-
             //string pattern = @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$";
             string pattern = @"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$";
 
+            string pass = passwordTextBox.Text;
 
-            string pass = Password.Text;
-
-            if (Regex.IsMatch(pass, pattern, RegexOptions.IgnoreCase))
+            if (!Regex.IsMatch(pass, pattern, RegexOptions.IgnoreCase))
             {
-                test.Content = "+";
-            }
-            else
+                passwordErrorLabel.Content = "password is incorrect";
+                passwordErrorLabel.Visibility = Visibility.Visible;
+            } else
             {
-                test.Content = "-";
-            }
-
-        }
-
-        private void Login_MouseEnter_1(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            if (Login.Text == String.Empty)
-            {
-                log.Content = "";
-            }
-
-        }
-
-        private void Login_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            if (Login.Text == String.Empty)
-            {
-                log.Content = "Login";
-            }
-
-        }
-
-        private void Password_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            if (Password.Text == String.Empty)
-            {
-                pass.Content = "";
-            }
-
-        }
-
-        private void Password_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            if (Password.Text == String.Empty)
-            {
-                pass.Content = "Password";
+                passwordErrorLabel.Visibility = Visibility.Hidden;
             }
         }
     }
