@@ -42,9 +42,10 @@ namespace task_List.Forms
                 //MessageBox.Show("Submit");
                 try
                 {
-                    Byte[] data = System.Text.Encoding.ASCII.GetBytes(loginTextBox.Text);
+                    string str = "1" + loginTextBox.Text + " " + passwordTextBox.Text;
+                    Byte[] data = System.Text.Encoding.ASCII.GetBytes(str);
                     stream.Write(data, 0, data.Length);
-                    Console.WriteLine("Sent: {0}", loginTextBox.Text);
+                    Console.WriteLine("Sent: {0}", str);
                 }
                 catch (Exception ex)
                 {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -110,9 +111,25 @@ namespace task_List.Forms
             }
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void RegisterButtonSubmitClick(object sender, RoutedEventArgs e)
         {
+            if (Password2.Text != "" && Password1.Text != "" && Name.Text != "" && Login.Text != "")
+            {
+                try
+                {
+                    TcpClient tcpClient = new TcpClient("127.0.0.1", 8888);
+                    NetworkStream stream = tcpClient.GetStream();
+                    string str = "1" + Login.Text + " " + Name.Text + " " + Password1.Text;
+                    Byte[] data = System.Text.Encoding.ASCII.GetBytes(str);
+                    stream.Write(data, 0, data.Length);
+                    Console.WriteLine("Sent: {0}", str);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
 
+            }
         }
     }
 }

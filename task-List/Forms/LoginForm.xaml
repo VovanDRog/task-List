@@ -15,7 +15,7 @@
         <TextBox
             x:Name="loginTextBox"
             Height="50"
-            Margin="62,78,66,0"
+            Margin="158,78,33,0"
             VerticalAlignment="Top"
             TextWrapping="Wrap" 
             FontSize="30" 
@@ -27,7 +27,7 @@
         <TextBox
             x:Name="passwordTextBox"
             Height="50"
-            Margin="63,173,65,0"
+            Margin="158,173,33,0"
             VerticalAlignment="Top"
             TextWrapping="Wrap"
             Text=""
@@ -52,20 +52,20 @@
         <Label 
             x:Name="loginErrorLabel" 
             HorizontalAlignment="Left" 
-            Margin="63,128,0,0"
+            Margin="158,128,0,0"
             VerticalAlignment="Top" 
             Height="29"
-            Width="289"
+            Width="229"
             Content="Login is incorrect" Foreground="Red"
         />
 
         <Label 
             x:Name="passwordErrorLabel"  
             HorizontalAlignment="Left" 
-            Margin="63,228,0,0"
+            Margin="158,228,0,0"
             VerticalAlignment="Top" 
             Height="26" 
-            Width="289"
+            Width="229"
             Content="Password is incorrect" Foreground="Red"
         />
 
@@ -88,11 +88,11 @@
             Foreground="#FFBFB3B3" 
             x:Name="login_placeholder" 
             HorizontalAlignment="Left" 
-            Margin="63,78,0,0"
+            Margin="10,78,0,0"
             VerticalAlignment="Top" 
             Height="50"
-            Width="143"
-            Content="Email"
+            Width="86"
+            Content="Email" RenderTransformOrigin="0.779,0.54"
         />
         <Label 
             FontSize="30" 
@@ -100,7 +100,7 @@
             Foreground="#FFA0A0A0" 
             x:Name="password_placeholder" 
             HorizontalAlignment="Left" 
-            Margin="63,173,0,0"
+            Margin="10,173,0,0"
             VerticalAlignment="Top" 
             Height="50"
             Width="143"
