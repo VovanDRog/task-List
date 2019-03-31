@@ -43,7 +43,7 @@
             Margin="134,284,134,0"
             VerticalAlignment="Top"
             Click="LoginButton_Click"
-            Content="Ввійти"
+            Content="SUBMIT"
             FontFamily="Times New Roman"
             FontSize="22" 
             FontWeight="Bold" 
@@ -54,9 +54,9 @@
             HorizontalAlignment="Left" 
             Margin="63,128,0,0"
             VerticalAlignment="Top" 
-            Height="24"
+            Height="29"
             Width="289"
-            Content="Login is incorrect"
+            Content="Login is incorrect" Foreground="Red"
         />
 
         <Label 
@@ -66,7 +66,7 @@
             VerticalAlignment="Top" 
             Height="26" 
             Width="289"
-            Content="Password is incorrect"
+            Content="Password is incorrect" Foreground="Red"
         />
 
         <Label 
@@ -77,10 +77,34 @@
             HorizontalAlignment="Left" 
             Margin="62,10,0,0"
             VerticalAlignment="Top" 
-            Height="41"
+            Height="50"
             Width="289"
-            Content="Вхід в аккаунт" 
+            Content="LOGIN" 
             FontWeight="Bold"
+        />
+        <Label 
+            FontSize="30" 
+            FontFamily="Times New Roman"
+            Foreground="#FFBFB3B3" 
+            x:Name="login_placeholder" 
+            HorizontalAlignment="Left" 
+            Margin="63,78,0,0"
+            VerticalAlignment="Top" 
+            Height="50"
+            Width="143"
+            Content="Email"
+        />
+        <Label 
+            FontSize="30" 
+            FontFamily="Times New Roman"
+            Foreground="#FFA0A0A0" 
+            x:Name="password_placeholder" 
+            HorizontalAlignment="Left" 
+            Margin="63,173,0,0"
+            VerticalAlignment="Top" 
+            Height="50"
+            Width="143"
+            Content="Password"
         />
 
     </Grid>

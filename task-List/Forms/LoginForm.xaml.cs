@@ -11,14 +11,15 @@ namespace task_List.Forms
     public partial class LoginForm : Window
     {
         private NetworkStream stream;
-        bool isSomethingHaveError = false;
+        bool isLoginСorrect = false;
+        bool isPasswordСorrect = false;
 
         public LoginForm()
         {
             InitializeComponent();
 
             loginErrorLabel.Visibility = passwordErrorLabel.Visibility = Visibility.Hidden;
-           // tryConnectToServer();
+            // tryConnectToServer();
         }
 
         private void tryConnectToServer()
@@ -27,9 +28,6 @@ namespace task_List.Forms
             {
                 TcpClient tcpClient = new TcpClient("127.0.0.1", 8888);
                 stream = tcpClient.GetStream();
-                // Byte[] data = System.Text.Encoding.ASCII.GetBytes(Login.Text);
-                // stream.Write(data, 0, data.Length);
-                // Console.WriteLine("Sent: {0}", Login.Text);
             }
             catch (Exception ex)
             {
@@ -39,16 +37,31 @@ namespace task_List.Forms
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            if (loginTextBox.Text != "" && passwordTextBox.Text != "" && !isSomethingHaveError)
+            if (loginTextBox.Text != "" && passwordTextBox.Text != "" && isLoginСorrect && isPasswordСorrect)
             {
-                MessageBox.Show( "Submit");
+                //MessageBox.Show("Submit");
+                try
+                {
+                    Byte[] data = System.Text.Encoding.ASCII.GetBytes(loginTextBox.Text);
+                    stream.Write(data, 0, data.Length);
+                    Console.WriteLine("Sent: {0}", loginTextBox.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Something is wrong. \n" + ex.ToString());
+                }
             }
-            else MessageBox.Show("Not submit");
+            else
+            {
+                MessageBox.Show("Not submit");
+                loginErrorLabel.Visibility = passwordErrorLabel.Visibility = Visibility.Visible;
+            }
         }
-
 
         private void Login_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
+            if (loginTextBox.Text == "") login_placeholder.Visibility = Visibility.Visible; else login_placeholder.Visibility = Visibility.Hidden;
+
             string pattern = @"^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$";
             string log = loginTextBox.Text;
 
@@ -56,9 +69,12 @@ namespace task_List.Forms
             {
                 loginErrorLabel.Content = "bad";
                 loginErrorLabel.Visibility = Visibility.Visible;
-            } else
+                isLoginСorrect = false;
+            }
+            else
             {
                 loginErrorLabel.Visibility = Visibility.Hidden;
+                isLoginСorrect = true;
             }
         }
         private void Password_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
@@ -72,9 +88,12 @@ namespace task_List.Forms
             {
                 passwordErrorLabel.Content = "password is incorrect";
                 passwordErrorLabel.Visibility = Visibility.Visible;
-            } else
+                isPasswordСorrect = false;
+            }
+            else
             {
                 passwordErrorLabel.Visibility = Visibility.Hidden;
+                isPasswordСorrect = true;
             }
         }
     }
