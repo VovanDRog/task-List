@@ -11,20 +11,35 @@
     <Grid Margin="0,0,2,0">
         <TextBox
             x:Name="Login"
-            Width="242"
+            Width="289"
             Height="50"
             Margin="92,22,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            TextWrapping="Wrap" />
+            TextWrapping="Wrap" Text=""
+            FontSize="30" 
+            FontFamily="Times New Roman"
+            Foreground="Black" 
+            TextChanged="Login_TextChanged"
+            MouseEnter="Login_MouseEnter_1"
+            MouseLeave="Login_MouseLeave"
+            />
+
         <TextBox
             x:Name="Password"
-            Width="242"
+            Width="290"
             Height="50"
-            Margin="92,116,0,0"
+            Margin="92,123,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            TextWrapping="Wrap" />
+            TextWrapping="Wrap" Text=""
+            FontSize="30" 
+            FontFamily="Times New Roman" 
+            TextChanged="Password_TextChanged"
+            MouseEnter="Password_MouseEnter"
+            MouseLeave="Password_MouseLeave" Foreground="Black"
+            />
+
         <Button
             x:Name="loginButton"
             Width="150"
@@ -34,5 +49,9 @@
             VerticalAlignment="Top"
             Click="LoginButton_Click"
             Content="Submit" />
+        <Label x:Name="log" Content="Login" HorizontalAlignment="Left" Margin="92,35,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Times New Roman" Height="37" Foreground="#FF9B9B9B"/>
+        <Label x:Name="pass" Content="Password" HorizontalAlignment="Left" Margin="92,123,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Times New Roman" Height="37" Foreground="#FF9B9B9B"/>
+        <Label x:Name="test" Content="Label" HorizontalAlignment="Left" Margin="21,87,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>

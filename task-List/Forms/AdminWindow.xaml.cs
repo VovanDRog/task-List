@@ -23,5 +23,25 @@ namespace task_List.Forms
         {
             InitializeComponent();
         }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            AddForm addForm = new AddForm();
+            addForm.Show();
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            EditForm editForm = new EditForm();
+            editForm.Show();
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteForm deleteForm = new DeleteForm();
+            deleteForm.Show();
+
+
+        }
     }
 }
