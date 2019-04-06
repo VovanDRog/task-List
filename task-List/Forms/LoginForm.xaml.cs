@@ -14,6 +14,8 @@ namespace task_List.Forms
         bool isLoginСorrect = false;
         bool isPasswordСorrect = false;
 
+        AuthForm authForm = new AuthForm();
+
         public LoginForm()
         {
             InitializeComponent();
@@ -39,6 +41,7 @@ namespace task_List.Forms
         {
             if (loginTextBox.Text != "" && passwordTextBox.Text != "" && isLoginСorrect && isPasswordСorrect)
             {
+
                 //MessageBox.Show("Submit");
                 try
                 {
@@ -96,6 +99,13 @@ namespace task_List.Forms
                 passwordErrorLabel.Visibility = Visibility.Hidden;
                 isPasswordСorrect = true;
             }
+        }
+
+
+        private void buttonRegister_Click(object sender, RoutedEventArgs e)
+        {
+            authForm.ShowDialog();
+            Close();
         }
     }
 }

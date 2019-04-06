@@ -15,7 +15,7 @@
         <TextBox
             x:Name="loginTextBox"
             Height="50"
-            Margin="158,78,33,0"
+            Margin="158,65,33,0"
             VerticalAlignment="Top"
             TextWrapping="Wrap" 
             FontSize="30" 
@@ -27,7 +27,7 @@
         <TextBox
             x:Name="passwordTextBox"
             Height="50"
-            Margin="158,173,33,0"
+            Margin="158,154,33,0"
             VerticalAlignment="Top"
             TextWrapping="Wrap"
             Text=""
@@ -40,7 +40,7 @@
         <Button
             x:Name="loginButton"
             Height="44"
-            Margin="134,284,134,0"
+            Margin="134,247,134,0"
             VerticalAlignment="Top"
             Click="LoginButton_Click"
             Content="SUBMIT"
@@ -52,21 +52,21 @@
         <Label 
             x:Name="loginErrorLabel" 
             HorizontalAlignment="Left" 
-            Margin="158,128,0,0"
+            Margin="158,115,0,0"
             VerticalAlignment="Top" 
-            Height="29"
+            Height="34"
             Width="229"
-            Content="Login is incorrect" Foreground="Red"
+            Content="Login is incorrect" Foreground="Red" FontSize="16"
         />
 
         <Label 
             x:Name="passwordErrorLabel"  
             HorizontalAlignment="Left" 
-            Margin="158,228,0,0"
+            Margin="158,209,0,0"
             VerticalAlignment="Top" 
-            Height="26" 
+            Height="33" 
             Width="229"
-            Content="Password is incorrect" Foreground="Red"
+            Content="Password is incorrect" Foreground="Red" FontSize="16"
         />
 
         <Label 
@@ -88,7 +88,7 @@
             Foreground="#FFBFB3B3" 
             x:Name="login_placeholder" 
             HorizontalAlignment="Left" 
-            Margin="10,78,0,0"
+            Margin="10,65,0,0"
             VerticalAlignment="Top" 
             Height="50"
             Width="86"
@@ -100,12 +100,17 @@
             Foreground="#FFA0A0A0" 
             x:Name="password_placeholder" 
             HorizontalAlignment="Left" 
-            Margin="10,173,0,0"
+            Margin="10,154,0,0"
             VerticalAlignment="Top" 
             Height="50"
             Width="143"
             Content="Password"
         />
+        <TextBlock x:Name="textBlock" 
+                   Margin="134,318,134,0"
+                   VerticalAlignment="Top" Height="27" TextAlignment="Center" Foreground="#FF05172C" FontStyle="Italic" TextDecorations="Underline"  >
+            <Hyperlink Click="buttonRegister_Click" FontSize="18">Register</Hyperlink>
+        </TextBlock>
 
     </Grid>
 </Window>

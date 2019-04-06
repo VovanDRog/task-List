@@ -18,8 +18,7 @@
             Width="158" 
             FontSize="20" 
             FontFamily="Times New Roman"
-            MouseEnter="Login_MouseEnter"
-            MouseLeave="Login_MouseLeave"
+           
             TextChanged="Login_TextChanged"
             />
         <TextBox 
@@ -33,8 +32,7 @@
             Width="158" 
             FontSize="20" 
             FontFamily="Times New Roman"
-            MouseEnter="Name_MouseEnter"
-            MouseLeave="Name_MouseLeave" 
+         
             TextChanged="Name_TextChanged"
             />
         <TextBox 
@@ -49,8 +47,7 @@
             FontSize="20" 
             FontFamily="Times New Roman"
             TextChanged="Password1_TextChanged"
-            MouseEnter="Password1_MouseEnter"
-            MouseLeave="Password1_MouseLeave"
+           
             />
         <TextBox 
             x:Name="Password2" 
@@ -63,8 +60,6 @@
             Width="158" 
             FontSize="20" 
             FontFamily="Times New Roman"
-            MouseEnter="Password2_MouseEnter"
-            MouseLeave="Password2_MouseLeave"
             TextChanged="Password2_TextChanged"
             />
         <Button x:Name="RegisterButton" Content="Register" Margin="82,318,77,0" VerticalAlignment="Top" Click="RegisterButtonSubmitClick" Height="34"/>
@@ -72,7 +67,7 @@
         <Label x:Name="name_l" Content="Name" HorizontalAlignment="Left" Margin="10,132,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Times New Roman" Foreground="#FF898989"/>
         <Label x:Name="pass1" Content="Password" HorizontalAlignment="Left" Margin="10,188,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Times New Roman" Foreground="#FF898989"/>
         <Label x:Name="pass2" Content="Password" HorizontalAlignment="Left" Margin="10,245,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Times New Roman" Foreground="#FF898989"/>
-        <Label x:Name="reg" Content="REGISTRATION" Margin="63,10,62,0" VerticalAlignment="Top" FontSize="20" FontFamily="Times New Roman" Foreground="Black"/>
+        <Label x:Name="reg" Content="REGISTRATION" Margin="57,10,56,0" VerticalAlignment="Top" FontSize="20" FontFamily="Times New Roman" Foreground="Black" />
 
     </Grid>
 </Window>
