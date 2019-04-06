@@ -56,11 +56,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Forms\AddForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forms\AdminWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Forms\AuthForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\DeleteForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\EditForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -76,11 +88,20 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Forms\AddForm.xaml.cs">
+      <DependentUpon>AddForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\AuthForm.xaml.cs">
       <DependentUpon>AuthForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DeleteForm.xaml.cs">
+      <DependentUpon>DeleteForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditForm.xaml.cs">
+      <DependentUpon>EditForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\LoginForm.xaml.cs">
       <DependentUpon>LoginForm.xaml</DependentUpon>

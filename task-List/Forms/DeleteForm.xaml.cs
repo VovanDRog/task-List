@@ -15,18 +15,13 @@ using System.Windows.Shapes;
 namespace task_List.Forms
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для DeleteForm.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DeleteForm : Window
     {
-        public MainWindow()
+        public DeleteForm()
         {
             InitializeComponent();
-        }
-
-        private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

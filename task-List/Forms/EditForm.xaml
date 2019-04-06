@@ -1,0 +1,21 @@
+﻿<Window x:Class="task_List.Forms.EditForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:task_List.Forms"
+        mc:Ignorable="d"
+        Title="EditForm" Height="350" Width="280">
+    <Grid>
+        <TextBox x:Name="NewName" HorizontalAlignment="Left" Height="30" Margin="100,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" FontFamily="Times New Roman" FontSize="20"/>
+        <TextBox x:Name="Task" HorizontalAlignment="Left" Height="30" Margin="100,113,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" FontFamily="Times New Roman" FontSize="20"/>
+        <TextBox x:Name="Description" HorizontalAlignment="Left" Height="101" Margin="100,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" FontFamily="Times New Roman" FontSize="14"/>
+        <Button x:Name="Change" Content="Change" HorizontalAlignment="Left" Margin="165,288,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label x:Name="label_NewName" Content="New Name" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Task" Content="Task" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Description" Content="Description" HorizontalAlignment="Left" Margin="10,164,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="30" Margin="100,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" FontFamily="Times New Roman" FontSize="20"/>
+        <Label x:Name="Label_Name" Content="Name" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
