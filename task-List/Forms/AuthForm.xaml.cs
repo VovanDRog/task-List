@@ -111,6 +111,20 @@ namespace task_List.Forms
                 }
 
             }
+            else
+            {
+                loginErrorLabel.Content = "Login is empty";
+                loginErrorLabel.Visibility = Visibility.Visible;
+
+                NameErrorLabel.Content = "Name is empty";
+                NameErrorLabel.Visibility = Visibility.Visible;
+
+                PasswordErrorLabel.Content = "Password is empty";
+                PasswordErrorLabel.Visibility = Visibility.Visible;
+
+
+
+            }
         }
     }
 }
