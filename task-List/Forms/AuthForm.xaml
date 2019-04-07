@@ -75,6 +75,18 @@
             Content="Login is incorrect" Foreground="Red" FontSize="16"
         />
         <Label 
+            x:Name="NameErrorLabel" 
+            HorizontalAlignment="Left" 
+            Margin="159,198,0,0"
+            VerticalAlignment="Top" 
+            Height="34"
+            Width="229"
+            Content="Incorrect name length" 
+            Foreground="Red" 
+            FontSize="16"
+        />
+
+        <Label 
             x:Name="PasswordErrorLabel" 
             HorizontalAlignment="Left" 
             Margin="159,366,0,0"
@@ -83,6 +95,7 @@
             Width="229"
             Content="Passwords do not match" Foreground="Red" FontSize="16"
         />
+        
 
         <Label 
             x:Name="Password2ErrorLabel" 
@@ -91,7 +104,9 @@
             VerticalAlignment="Top" 
             Height="34"
             Width="229"
-            Content="Password is incorrect" Foreground="Red" FontSize="16"
+            Content="Incorrect password length" 
+            Foreground="Red" 
+            FontSize="16"
         />
 
         <Button 
