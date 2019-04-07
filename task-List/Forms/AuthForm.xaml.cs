@@ -1,29 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 
 namespace task_List.Forms
 {
-    /// <summary>
-    /// Interaction logic for AuthForm.xaml
-    /// </summary>
     public partial class AuthForm : Window
     {
-        bool isLoginСorrect = false;
-        bool isPasswordСorrect = false;
 
         public AuthForm()
         {
@@ -32,7 +17,6 @@ namespace task_List.Forms
 
         private void Login_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //if (Login.Text == "") login_placeholder.Visibility = Visibility.Visible; else login_placeholder.Visibility = Visibility.Hidden;
 
             string pattern = @"^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$";
             string log = Login.Text;
@@ -41,14 +25,12 @@ namespace task_List.Forms
             {
                 loginErrorLabel.Content = "Login is incorrect";
                 loginErrorLabel.Visibility = Visibility.Visible;
-                isLoginСorrect = false;
             }
             else
             {
                 loginErrorLabel.Visibility = Visibility.Hidden;
-                isLoginСorrect = true;
             }
-        }
+        }     
       
         private void Password1_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -104,6 +86,21 @@ namespace task_List.Forms
                     Byte[] data = System.Text.Encoding.ASCII.GetBytes(str);
                     stream.Write(data, 0, data.Length);
                     Console.WriteLine("Sent: {0}", str);
+
+                    // String to store the response ASCII representation.
+                    String responseData = String.Empty;
+
+                    // Read the first batch of the TcpServer response bytes.
+                    Int32 bytes = stream.Read(data, 0, data.Length);
+                    responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
+                    Console.WriteLine("Received: {0}", responseData);
+
+                    if (responseData == "true")
+                    {
+                        stream.Close();
+                        
+                        this.Close();
+                    } 
                 }
                 catch (Exception ex)
                 {
@@ -134,7 +131,6 @@ namespace task_List.Forms
                 Password2ErrorLabel.Content = "Password is empty";
                 Password2ErrorLabel.Visibility = Visibility.Visible;
             }
-
         }
     }
 }

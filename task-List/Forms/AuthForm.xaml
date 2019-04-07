@@ -171,7 +171,7 @@
         <Label 
             x:Name="reg" 
             Content="REGISTRATION" 
-            Margin="125,10,126,0" 
+            Margin="122,10,122,0" 
             VerticalAlignment="Top" 
             FontSize="20" 
             FontFamily="Times New Roman" 
