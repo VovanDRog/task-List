@@ -54,12 +54,12 @@ namespace task_List.Forms
         {
             if (Password1.Text.Length < 4 || Password1.Text.Length > 10)
             {
-                Password2ErrorLabel.Content = "Incorrect password length";
-                Password2ErrorLabel.Visibility = Visibility.Visible;
+                PasswordErrorLabel.Content = "Incorrect password length";
+                PasswordErrorLabel.Visibility = Visibility.Visible;
             }
             else
             {
-                Password2ErrorLabel.Visibility = Visibility.Hidden;
+                PasswordErrorLabel.Visibility = Visibility.Hidden;
             }
 
         }

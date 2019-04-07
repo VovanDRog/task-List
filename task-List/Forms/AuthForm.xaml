@@ -93,7 +93,7 @@
         <Label 
             x:Name="PasswordErrorLabel" 
             HorizontalAlignment="Left" 
-            Margin="159,366,0,0"
+            Margin="160,282,0,0"
             VerticalAlignment="Top" 
             Height="34"
             Width="229"
