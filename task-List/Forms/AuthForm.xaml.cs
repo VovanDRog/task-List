@@ -111,20 +111,30 @@ namespace task_List.Forms
                 }
 
             }
-            else
+            if (Login.Text == "")
             {
                 loginErrorLabel.Content = "Login is empty";
                 loginErrorLabel.Visibility = Visibility.Visible;
+            }
 
+            if(Name.Text == "")
+            {
                 NameErrorLabel.Content = "Name is empty";
                 NameErrorLabel.Visibility = Visibility.Visible;
-
+            }
+           
+            if(Password1.Text == "")
+            {
                 PasswordErrorLabel.Content = "Password is empty";
                 PasswordErrorLabel.Visibility = Visibility.Visible;
-
-
-
             }
+
+            if (Password2.Text == "")
+            {
+                Password2ErrorLabel.Content = "Password is empty";
+                Password2ErrorLabel.Visibility = Visibility.Visible;
+            }
+
         }
     }
 }
