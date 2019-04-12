@@ -50,7 +50,6 @@
             FontSize="30" 
             FontFamily="Times New Roman"
             TextChanged="Password1_TextChanged"
-           
             />
         <TextBox 
             x:Name="Password2" 
