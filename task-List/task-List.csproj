@@ -56,7 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Forms\AddForm.xaml">
+    <Page Include="Forms\AddTaskForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -64,15 +64,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\AuthForm.xaml">
+    <Page Include="Forms\RegForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\DeleteForm.xaml">
+    <Page Include="Forms\DeleteTaskForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\EditForm.xaml">
+    <Page Include="Forms\EditTaskForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -88,20 +88,20 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Forms\AddForm.xaml.cs">
-      <DependentUpon>AddForm.xaml</DependentUpon>
+    <Compile Include="Forms\AddTaskForm.xaml.cs">
+      <DependentUpon>AddTaskForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AuthForm.xaml.cs">
-      <DependentUpon>AuthForm.xaml</DependentUpon>
+    <Compile Include="Forms\RegForm.xaml.cs">
+      <DependentUpon>RegForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DeleteForm.xaml.cs">
-      <DependentUpon>DeleteForm.xaml</DependentUpon>
+    <Compile Include="Forms\DeleteTaskForm.xaml.cs">
+      <DependentUpon>DeleteTaskForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EditForm.xaml.cs">
-      <DependentUpon>EditForm.xaml</DependentUpon>
+    <Compile Include="Forms\EditTaskForm.xaml.cs">
+      <DependentUpon>EditTaskForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\LoginForm.xaml.cs">
       <DependentUpon>LoginForm.xaml</DependentUpon>
