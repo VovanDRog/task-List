@@ -23,5 +23,32 @@ namespace task_List.Forms
         {
             InitializeComponent();
         }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (Name.Text.Length < 4 || Name.Text.Length > 20 )
+            {
+                NameErrorLabel.Content = "Incorrect name length";
+                NameErrorLabel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                NameErrorLabel.Visibility = Visibility.Hidden;
+            }            
+
+        }
+
+        private void Name_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Name.Text.Length < 4 || Name.Text.Length > 20)
+            {
+                NameErrorLabel.Content = "Incorrect name length";
+                NameErrorLabel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                NameErrorLabel.Visibility = Visibility.Hidden;
+            }
+        }
     }
 }

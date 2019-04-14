@@ -108,13 +108,21 @@ namespace task_List.Forms
                 }
 
             }
-            if (Login.Text == "")
+
+            string pattern = @"^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$";
+            string log = Login.Text;
+
+            if (!Regex.IsMatch(log, pattern, RegexOptions.IgnoreCase))
             {
-                loginErrorLabel.Content = "Login is empty";
+                loginErrorLabel.Content = "Login is incorrect";
                 loginErrorLabel.Visibility = Visibility.Visible;
             }
+            else
+            {
+                loginErrorLabel.Visibility = Visibility.Hidden;
+            }
 
-            if(Name.Text == "")
+            if (Name.Text == "")
             {
                 NameErrorLabel.Content = "Name is empty";
                 NameErrorLabel.Visibility = Visibility.Visible;
