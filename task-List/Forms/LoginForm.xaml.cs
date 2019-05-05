@@ -49,7 +49,7 @@ namespace task_List.Forms
 
         private void Login_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            string pattern = @"^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$";
+            string pattern = @"^[A-Za-z0-9_-]{5,16}$";
             string log = loginTextBox.Text;
 
             if (!Regex.IsMatch(log, pattern, RegexOptions.IgnoreCase))
@@ -67,7 +67,7 @@ namespace task_List.Forms
         private void Password_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             // string pattern = @"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$";
-            string pattern = @"(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}";
+            string pattern = @"^[A-Za-z0-9]{5,16}$";
 
             string pass = passwordTextBox.Text;
 

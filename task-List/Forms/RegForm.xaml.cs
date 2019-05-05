@@ -18,7 +18,7 @@ namespace task_List.Forms
         private void Login_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-            string pattern = @"^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$";
+            /*string pattern = @"^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$";
             string log = Login.Text;
 
             if (!Regex.IsMatch(log, pattern, RegexOptions.IgnoreCase))
@@ -29,11 +29,27 @@ namespace task_List.Forms
             else
             {
                 loginErrorLabel.Visibility = Visibility.Hidden;
-            }
+            }*/
         }     
       
         private void Password1_TextChanged(object sender, TextChangedEventArgs e)
         {
+            string pattern = @"^[A-Za-z0-9]{5,16}$";
+            string log = Password1.Text;
+
+            if (!Regex.IsMatch(log, pattern, RegexOptions.IgnoreCase))
+            {
+                PasswordErrorLabel.Content = "Incorrect password";
+                PasswordErrorLabel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                PasswordErrorLabel.Visibility = Visibility.Hidden;
+            }
+
+
+
+            /*
             if (Password1.Text.Length < 4 || Password1.Text.Length > 10)
             {
                 PasswordErrorLabel.Content = "Incorrect password length";
@@ -42,14 +58,28 @@ namespace task_List.Forms
             else
             {
                 PasswordErrorLabel.Visibility = Visibility.Hidden;
-            }
+            }*/
 
         }
 
         private void Name_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
-            if(Name.Text.Length < 4 || Name.Text.Length > 10)
+
+            string pattern = @"^[A-Za-z0-9_-]{5,16}$";
+            string log = Name.Text;
+
+            if (!Regex.IsMatch(log, pattern, RegexOptions.IgnoreCase))
+            {
+                NameErrorLabel.Content = "Incorrect name";
+                NameErrorLabel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                NameErrorLabel.Visibility = Visibility.Hidden;
+            }
+
+/*
+            if (Name.Text.Length < 4 || Name.Text.Length > 10)
             {
                 NameErrorLabel.Content = "Incorrect name length";
                 NameErrorLabel.Visibility = Visibility.Visible;
@@ -57,7 +87,7 @@ namespace task_List.Forms
             else
             {
                 NameErrorLabel.Visibility = Visibility.Hidden;
-            }
+            }*/
         }
 
         private void Password2_TextChanged(object sender, TextChangedEventArgs e)
@@ -76,13 +106,13 @@ namespace task_List.Forms
 
         private void RegisterButtonSubmitClick(object sender, RoutedEventArgs e)
         {
-            if (Password2.Text != "" && Password1.Text != "" && Name.Text != "" && Login.Text != "")
+            if (Password1.Text.Length < 4 || Password1.Text.Length > 10 && Password1.Text == Password2.Text && Name.Text.Length < 4 || Name.Text.Length > 16)
             {
                 try
                 {
                     TcpClient tcpClient = new TcpClient("127.0.0.1", 8888);
                     NetworkStream stream = tcpClient.GetStream();
-                    string str = "1" + Login.Text + " " + Name.Text + " " + Password1.Text;
+                    string str = "1" + Name.Text + " " + Password1.Text;
                     Byte[] data = System.Text.Encoding.ASCII.GetBytes(str);
                     stream.Write(data, 0, data.Length);
                     Console.WriteLine("Sent: {0}", str);
@@ -108,11 +138,11 @@ namespace task_List.Forms
                 }
 
             }
-            if (Login.Text == "")
+           /* if (Login.Text == "")
             {
                 loginErrorLabel.Content = "Login is empty";
                 loginErrorLabel.Visibility = Visibility.Visible;
-            }
+            }*/
 
             if(Name.Text == "")
             {
