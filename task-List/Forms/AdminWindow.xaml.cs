@@ -32,6 +32,11 @@ namespace task_List.Forms
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+            if(Name.Text.Length > 0 && errorname.Visibility == Visibility.Hidden && Task.Text.Length > 0 && errortask.Visibility == Visibility.Hidden && Description.Text.Length > 0 && errordescription.Visibility == Visibility.Hidden)
+            { //Name.Text = "+++"; 
+            }
+            //else
+                //Name.Text = "---";
 
         }
 
@@ -155,6 +160,27 @@ namespace task_List.Forms
                 errorname.Visibility = Visibility.Hidden;
             }
 
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (Name.Text.Length > 0 && errorname.Visibility == Visibility.Hidden)
+            {
+                Name.Text = "+++";
+            }
+            else
+                Name.Text = "---";
+
+        }
+
+        private void Edit_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (Name.Text.Length > 0 && errorname.Visibility == Visibility.Hidden && Task.Text.Length > 0 && errortask.Visibility == Visibility.Hidden && Description.Text.Length > 0 && errordescription.Visibility == Visibility.Hidden)
+            {
+                Name.Text = "+++";
+            }
+            else
+                Name.Text = "---";
         }
     }
 }
