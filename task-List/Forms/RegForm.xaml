@@ -12,23 +12,10 @@
         >
     <Grid Margin="0,0,2,0">
         <TextBox 
-            x:Name="Login" 
-            HorizontalAlignment="Left" 
-            Height="50" 
-            Margin="160,61,0,0" 
-            TextWrapping="Wrap" 
-            Text="" 
-            VerticalAlignment="Top" 
-            Width="228" 
-            FontSize="30" 
-            FontFamily="Times New Roman"
-            TextChanged="Login_TextChanged"
-            />
-        <TextBox 
             x:Name="Name" 
             HorizontalAlignment="Left" 
             Height="50" 
-            Margin="160,148,0,0" 
+            Margin="160,114,0,0" 
             TextWrapping="Wrap" 
             Text="" 
             VerticalAlignment="Top" 
@@ -42,7 +29,7 @@
             x:Name="Password1" 
             HorizontalAlignment="Left" 
             Height="50" 
-            Margin="160,232,0,0" 
+            Margin="160,198,0,0" 
             TextWrapping="Wrap" 
             Text="" 
             VerticalAlignment="Top" 
@@ -55,7 +42,7 @@
             x:Name="Password2" 
             HorizontalAlignment="Left" 
             Height="50" 
-            Margin="160,316,0,0" 
+            Margin="160,282,0,0" 
             TextWrapping="Wrap" 
             Text="" 
             VerticalAlignment="Top" 
@@ -79,7 +66,7 @@
         <Label 
             x:Name="NameErrorLabel" 
             HorizontalAlignment="Left" 
-            Margin="159,198,0,0"
+            Margin="160,164,0,0"
             VerticalAlignment="Top" 
             Height="34"
             Width="229"
@@ -87,12 +74,13 @@
             Foreground="Red" 
             FontSize="16"
             Visibility="Collapsed"
+            
         />
 
         <Label 
             x:Name="PasswordErrorLabel" 
             HorizontalAlignment="Left" 
-            Margin="160,282,0,0"
+            Margin="160,248,0,0"
             VerticalAlignment="Top" 
             Height="34"
             Width="229"
@@ -101,12 +89,12 @@
             FontSize="16"
             Visibility="Hidden"
         />
-        
+
 
         <Label 
             x:Name="Password2ErrorLabel" 
             HorizontalAlignment="Left" 
-            Margin="160,366,0,0"
+            Margin="160,332,0,0"
             VerticalAlignment="Top" 
             Height="34"
             Width="229"
@@ -125,33 +113,25 @@
             Height="42"
             FontFamily="Times New Roman"
             FontSize="22" 
-            FontWeight="Bold" 
+            FontWeight="Bold" Background="#FF70B8E8" Foreground="White" BorderBrush="White" 
             />
-        <Label x:Name="Log" 
-               Content="Login" 
-               HorizontalAlignment="Left" 
-               Margin="10,67,0,0" 
-               VerticalAlignment="Top" 
-               FontSize="30" 
-               FontFamily="Times New Roman" 
-               Foreground="#FF898989"/>
 
 
         <Label 
             x:Name="name_l" 
                Content="Name" 
             HorizontalAlignment="Left" 
-            Margin="10,166,0,0" 
+            Margin="10,114,0,0" 
             VerticalAlignment="Top" 
             FontSize="30" 
             FontFamily="Times New Roman" 
-            Foreground="#FF898989"/>
+            Foreground="#FF898989" RenderTransformOrigin="0.634,-0.364"/>
 
         <Label 
             x:Name="password1" 
             Content="Password" 
             HorizontalAlignment="Left" 
-            Margin="10,250,0,0" 
+            Margin="10,198,0,0" 
             VerticalAlignment="Top" 
             FontSize="30" 
             FontFamily="Times New Roman" 
@@ -161,22 +141,23 @@
             x:Name="password2" 
             Content="Password" 
             HorizontalAlignment="Left" 
-            Margin="10,334,0,0" 
+            Margin="10,282,0,0" 
             VerticalAlignment="Top" 
             FontSize="30" 
             FontFamily="Times New Roman" 
-            Foreground="#FF898989"/>
-
-        <Label 
+            Foreground="#FF898989" RenderTransformOrigin="0.512,-0.398"/>
+        <Border BorderBrush="#FF70B8E8" BorderThickness="1" HorizontalAlignment="Left" Height="86" VerticalAlignment="Top" Width="418" Background="#FF70B8E8">
+            <Label 
             x:Name="reg" 
             Content="REGISTRATION" 
-            Margin="122,10,122,0" 
+            Margin="88,21,88,0" 
             VerticalAlignment="Top" 
-            FontSize="20" 
+            FontSize="30" 
             FontFamily="Times New Roman" 
-            Foreground="Black" 
+            Foreground="White" 
             FontWeight="Bold"
             />
+        </Border>
 
     </Grid>
 </Window>

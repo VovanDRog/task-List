@@ -6,12 +6,205 @@
     xmlns:local="clr-namespace:task_List.Forms"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="AdminWindow"
-    Width="200"
-    Height="200"
+    Width="455.818"
+    Height="405.682"
     mc:Ignorable="d">
-    <Grid Margin="0,0,0,0" >
-        <Button x:Name="Add" Content="Add" HorizontalAlignment="Left"  Margin="62,53,0,0" VerticalAlignment="Top" Width="75" Click="Add_Click"/>
-        <Button x:Name="Edit" Content="Edit" HorizontalAlignment="Left" Margin="62,80,0,0" VerticalAlignment="Top" Width="75" Click="Edit_Click"/>
-        <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="62,107,0,0" VerticalAlignment="Top" Width="75" Click="Delete_Click"/>
+    <Grid Margin="0,0,2,2" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="#FF70B8E8" BorderThickness="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="446" OpacityMask="#FF70B8E8" Background="#FF70B8E8">
+            <ComboBox x:Name="comboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"  SelectionChanged="comboBox_SelectionChanged" Text="AAAAA" BorderBrush="#FF70B8E8" Background="#FF70B8E8" Margin="-1,-1,0,0">
+                <ComboBox.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Foreground>
+                <Label x:Name="add" 
+                       Content="Add" 
+                       Width="110" 
+                       Background="#FF70B8E8" 
+                       Foreground="White"
+                       MouseDown="add_MouseDown"
+                       
+                       />
+                <Label x:Name="edit" 
+                       Content="Edit" 
+                       Width="110" 
+                       Background="#FF70B8E8" 
+                       Foreground="White"
+                       MouseDown="edit_MouseDown"/>
+                <Label x:Name="delete" 
+                       Content="Delete"
+                       Width="110" 
+                       Background="#FF70B8E8"
+                       Foreground="White"
+                       MouseDown="delete_MouseDown"/>
+            </ComboBox>
+        </Border>
+        <TextBox x:Name="Name" 
+                 HorizontalAlignment="Left" 
+                 Height="40" 
+                 Margin="164,42,0,0"                  
+                 TextWrapping="Wrap" 
+                 Text="" 
+                 VerticalAlignment="Top" 
+                 Width="166"
+                 FontFamily="Times New Roman" 
+                 FontSize="25" 
+                 Grid.ColumnSpan="2" TextChanged="Name_TextChanged"/>
+        <TextBox x:Name="Task" 
+                 HorizontalAlignment="Left" 
+                 Height="40" 
+                 Margin="164,112,0,0" 
+                 TextWrapping="Wrap" 
+                 Text="" 
+                 VerticalAlignment="Top" 
+                 Width="166" 
+                 FontFamily="Times New Roman" 
+                 FontSize="25" 
+                 Grid.ColumnSpan="2" 
+                 TextChanged="Task_TextChanged"/>
+        <TextBox x:Name="Description" 
+                 HorizontalAlignment="Left" 
+                 Height="100" 
+                 Margin="164,184,0,0" 
+                 TextWrapping="Wrap" 
+                 Text="" 
+                 VerticalAlignment="Top" 
+                 Width="166"
+                 FontFamily="Times New Roman" 
+                 FontSize="14" 
+                 Grid.ColumnSpan="2" 
+                 TextChanged="Description_TextChanged"/>
+        <Button x:Name="Add" 
+                Content="Add" 
+                HorizontalAlignment="Left"
+                Margin="245,320,0,0" 
+                VerticalAlignment="Top" 
+                Width="85" 
+                Grid.ColumnSpan="2" 
+                Click="Add_Click"
+                FontFamily="Times New Roman"
+                FontSize="22" 
+                FontWeight="Bold" 
+                Background="#FF70B8E8" 
+                Foreground="White" 
+                BorderBrush="White" Height="40"/>
+
+        <Label x:Name="label" 
+               Content="Name" 
+               HorizontalAlignment="Left" 
+               Margin="10,42,0,0" 
+               VerticalAlignment="Top" 
+               Grid.ColumnSpan="2"
+               FontSize="25" 
+               FontFamily="Times New Roman" 
+               Foreground="#FF898989"/>
+        <Label x:Name="label1" 
+               Content="Task" 
+               HorizontalAlignment="Left" 
+               Margin="10,112,0,0" 
+               VerticalAlignment="Top" 
+               Grid.ColumnSpan="2"
+               FontSize="25" 
+               FontFamily="Times New Roman" 
+               Foreground="#FF898989"/>
+        <Label x:Name="label2" 
+               Content="Description" 
+               HorizontalAlignment="Left" 
+               Margin="10,184,0,0" 
+               VerticalAlignment="Top" 
+               Grid.ColumnSpan="2"
+                FontSize="25" 
+               FontFamily="Times New Roman" 
+               Foreground="#FF898989"/>
+        <Button x:Name="Delete" 
+                Grid.ColumnSpan="2"
+                Content="Delete" 
+                HorizontalAlignment="Left" 
+                Margin="245,320,0,0"
+                VerticalAlignment="Top" 
+                Width="85"
+                FontFamily="Times New Roman"
+                FontSize="22" 
+                FontWeight="Bold" 
+                Background="#FF70B8E8" 
+                Foreground="White" 
+                BorderBrush="White" 
+                Height="40" 
+                Click="Delete_Click"
+                Visibility="Hidden"
+                />
+        <Button x:Name="Edit" 
+                Grid.ColumnSpan="2" 
+                Content="Change" 
+                HorizontalAlignment="Left" 
+                Margin="245,320,0,0" 
+                VerticalAlignment="Top"
+                Width="85"
+                FontFamily="Times New Roman"
+                FontSize="22" 
+                FontWeight="Bold" 
+                Background="#FF70B8E8" 
+                Foreground="White" 
+                BorderBrush="White" 
+                Height="40" 
+                Click="Edit_Click_1"
+                Visibility="Hidden"
+                />
+        <Label x:Name="errorname" 
+               Grid.ColumnSpan="2" 
+               Content="Incorrect name length" 
+               HorizontalAlignment="Left" 
+               Margin="164,82,0,0" 
+               VerticalAlignment="Top"                           
+               Foreground="Red" 
+               FontSize="16" 
+               Width="166"
+               Visibility="Hidden"
+               />
+        <Label x:Name="errortask" 
+            Grid.ColumnSpan="2" 
+            Content="Incorrect task lenght" 
+            HorizontalAlignment="Left" 
+            Margin="164,152,0,0" 
+            VerticalAlignment="Top"                           
+            Foreground="Red" 
+            FontSize="16" 
+            Width="166"
+            Visibility="Hidden"
+               />
+        <Label x:Name="errordescription" 
+            Grid.ColumnSpan="2" 
+            Content="Description is empty" 
+            HorizontalAlignment="Left" 
+            Margin="164,284,0,0" 
+            VerticalAlignment="Top"                           
+            Foreground="Red" 
+            FontSize="16" 
+            Width="166"
+            Visibility="Hidden"
+               />
+        <Button x:Name="Search" 
+            Content="Search" 
+            HorizontalAlignment="Left"
+            Margin="351,41,0,0" 
+            VerticalAlignment="Top" 
+            Width="85" 
+            Grid.ColumnSpan="2" 
+            Click="Search_Click"
+            FontFamily="Times New Roman"
+            FontSize="22" 
+            FontWeight="Bold" 
+            Background="#FF70B8E8" 
+            Foreground="White" 
+            BorderBrush="White" 
+            Height="40"
+            Visibility="Hidden"
+            />
+
     </Grid>
 </Window>
