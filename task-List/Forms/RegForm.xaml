@@ -22,7 +22,7 @@
             Width="228" 
             FontSize="30" 
             FontFamily="Times New Roman"
-         
+
             TextChanged="Name_TextChanged"
             />
         <TextBox 

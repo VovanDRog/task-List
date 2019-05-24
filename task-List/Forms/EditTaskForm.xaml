@@ -5,17 +5,184 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:task_List.Forms"
         mc:Ignorable="d"
-        Title="EditForm" Height="350" Width="280">
-    <Grid>
-        <TextBox x:Name="NewName" HorizontalAlignment="Left" Height="30" Margin="100,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" FontFamily="Times New Roman" FontSize="20"/>
-        <TextBox x:Name="Task" HorizontalAlignment="Left" Height="30" Margin="100,113,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" FontFamily="Times New Roman" FontSize="20"/>
-        <TextBox x:Name="Description" HorizontalAlignment="Left" Height="101" Margin="100,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" FontFamily="Times New Roman" FontSize="14"/>
-        <Button x:Name="Change" Content="Change" HorizontalAlignment="Left" Margin="165,288,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label x:Name="label_NewName" Content="New Name" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Task" Content="Task" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Description" Content="Description" HorizontalAlignment="Left" Margin="10,164,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="30" Margin="100,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" FontFamily="Times New Roman" FontSize="20"/>
-        <Label x:Name="Label_Name" Content="Name" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top"/>
+        Title="EditForm" Height="513" Width="414">
+    <Grid Margin="0,0,2,3">
+        <TextBox 
+            x:Name="NewName" 
+            HorizontalAlignment="Left" 
+            Height="50" 
+            Width="228"
+            Margin="165,104,0,0" 
+            TextWrapping="Wrap" 
+            Text="" 
+            VerticalAlignment="Top"          
+            FontFamily="Times New Roman" 
+            FontSize="30" TextChanged="NewName_TextChanged"
+            />
+
+        <Label 
+            x:Name="NewNameErrorLabel" 
+            HorizontalAlignment="Left" 
+            Margin="165,154,0,0"
+            VerticalAlignment="Top" 
+            Height="34"
+            Width="229"
+            Content="New name is incorrect"
+            Foreground="Red" 
+            FontSize="16"  
+            Visibility="Hidden"
+            
+        />
+
+        <TextBox 
+            x:Name="Task" 
+            HorizontalAlignment="Left" 
+            Height="50" 
+            Width="228"
+            Margin="165,188,0,0"
+            TextWrapping="Wrap" 
+            Text="" 
+            VerticalAlignment="Top"            
+            FontFamily="Times New Roman" 
+            FontSize="30" 
+            TextChanged="Task_TextChanged"
+            />
+
+        <Label 
+            x:Name="TaskErrorLabel" 
+            HorizontalAlignment="Left" 
+            Margin="165,238,0,0"
+            VerticalAlignment="Top" 
+            Height="34"
+            Width="229"
+            Content="Task is incorrect"
+            Foreground="Red" 
+            FontSize="16"  
+            Visibility="Hidden"
+            
+        />
+
+        <TextBox 
+            x:Name="Description" 
+            HorizontalAlignment="Left" 
+            Height="101" 
+            Margin="165,272,0,0" 
+            TextWrapping="Wrap" 
+            Text="" 
+            VerticalAlignment="Top"              
+            Width="228"           
+            FontFamily="Times New Roman" 
+            FontSize="20" 
+            TextChanged="Description_TextChanged"
+            />
+
+
+        <Label 
+            x:Name="DescriptionErrorLabel" 
+            HorizontalAlignment="Left" 
+            Margin="165,373,0,0"
+            VerticalAlignment="Top" 
+            Height="34"
+            Width="229"
+            Content="Description is incorrect"
+            Foreground="Red" 
+            FontSize="16"  
+            Visibility="Hidden"
+            
+        />
+
+        <Button 
+            x:Name="Change" 
+            Content="Change" 
+            HorizontalAlignment="Left" 
+            Margin="153,407,0,0" 
+            VerticalAlignment="Top" 
+            Width="100"
+            Height="40"
+            FontFamily="Times New Roman"
+            FontSize="22" 
+            FontWeight="Bold" Click="Change_Click"
+            />
+        <Label 
+            x:Name="label_NewName" 
+            Content="New Name" 
+            HorizontalAlignment="Left" 
+            Margin="10,104,0,0" 
+            VerticalAlignment="Top"
+            FontSize="30" 
+               FontFamily="Times New Roman"
+               Foreground="#FFBFB3B3" 
+            />
+
+        <Label 
+            x:Name="label_Task" 
+            Content="Task" 
+            HorizontalAlignment="Left" 
+            Margin="10,188,0,0" 
+            VerticalAlignment="Top"
+            FontSize="30" 
+               FontFamily="Times New Roman"
+               Foreground="#FFBFB3B3" 
+            />
+
+        <Label 
+            x:Name="label_Description" 
+            Content="Description" 
+            HorizontalAlignment="Left" 
+            Margin="10,272,0,0" 
+            VerticalAlignment="Top"
+            FontSize="30" 
+               FontFamily="Times New Roman"
+               Foreground="#FFBFB3B3" 
+            />
+
+        <TextBox 
+            x:Name="Name" 
+            HorizontalAlignment="Left" 
+            Height="50" 
+            Width="228"
+            Margin="165,20,0,0" 
+            TextWrapping="Wrap" 
+            Text="" 
+            VerticalAlignment="Top" 
+            FontFamily="Times New Roman" 
+            FontSize="30" 
+            TextChanged="Name_TextChanged"
+            />
+
+        <Label 
+            x:Name="NameErrorLabel" 
+            HorizontalAlignment="Left" 
+            Margin="165,70,0,0"
+            VerticalAlignment="Top" 
+            Height="34"
+            Width="229"
+            Content="Name is incorrect"
+            Foreground="Red" 
+            FontSize="16"  
+            Visibility="Collapsed"
+            
+            
+        />
+
+        <Label 
+            x:Name="Label_Name" 
+            Content="Name" 
+            HorizontalAlignment="Left" 
+            Margin="10,20,0,0" 
+            VerticalAlignment="Top"
+            FontSize="30" 
+               FontFamily="Times New Roman"
+               Foreground="#FFBFB3B3" 
+            />
+        <Button 
+            x:Name="Search" 
+            Content="Search"
+            HorizontalAlignment="Left" 
+            Margin="10,70,0,0"
+            VerticalAlignment="Top"
+            Width="75" Click="Search_Click"
+            />
 
     </Grid>
 </Window>
