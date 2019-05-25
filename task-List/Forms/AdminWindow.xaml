@@ -6,15 +6,15 @@
     xmlns:local="clr-namespace:task_List.Forms"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="AdminWindow"
-    Width="455.818"
-    Height="405.682"
+    Width="822.318"
+    Height="697.682"
     mc:Ignorable="d">
-    <Grid Margin="0,0,2,2" >
+    <Grid Margin="0,0,2,17" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Border BorderBrush="#FF70B8E8" BorderThickness="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="446" OpacityMask="#FF70B8E8" Background="#FF70B8E8">
+        <Border BorderBrush="#FF70B8E8" BorderThickness="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="811" OpacityMask="#FF70B8E8" Background="#FF70B8E8" Margin="1,0,0,0">
             <ComboBox x:Name="comboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"  SelectionChanged="comboBox_SelectionChanged" Text="AAAAA" BorderBrush="#FF70B8E8" Background="#FF70B8E8" Margin="-1,-1,0,0">
                 <ComboBox.Foreground>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -42,6 +42,13 @@
                        Background="#FF70B8E8"
                        Foreground="White"
                        MouseDown="delete_MouseDown"/>
+                <Label x:Name="viwe" 
+                       Content="View" 
+                       Width="110"
+                       Background="#FF70B8E8"
+                       Foreground="White"
+                       MouseDown="viwe_MouseDown"/>
+
             </ComboBox>
         </Border>
         <TextBox x:Name="Name" 
@@ -50,6 +57,7 @@
                  Margin="164,42,0,0"                  
                  TextWrapping="Wrap" 
                  Text="" 
+                 Visibility="Hidden"
                  VerticalAlignment="Top" 
                  Width="166"
                  FontFamily="Times New Roman" 
@@ -66,7 +74,8 @@
                  FontFamily="Times New Roman" 
                  FontSize="25" 
                  Grid.ColumnSpan="2" 
-                 TextChanged="Task_TextChanged"/>
+                 TextChanged="Task_TextChanged"
+                 Visibility="Hidden"/>
         <TextBox x:Name="Description" 
                  HorizontalAlignment="Left" 
                  Height="100" 
@@ -78,7 +87,8 @@
                  FontFamily="Times New Roman" 
                  FontSize="14" 
                  Grid.ColumnSpan="2" 
-                 TextChanged="Description_TextChanged"/>
+                 TextChanged="Description_TextChanged"
+                 Visibility="Hidden"/>
         <Button x:Name="Add" 
                 Content="Add" 
                 HorizontalAlignment="Left"
@@ -92,7 +102,10 @@
                 FontWeight="Bold" 
                 Background="#FF70B8E8" 
                 Foreground="White" 
-                BorderBrush="White" Height="40"/>
+                BorderBrush="White" 
+                Height="40"
+                Visibility="Hidden"
+                />
 
         <Label x:Name="label" 
                Content="Name" 
@@ -102,7 +115,9 @@
                Grid.ColumnSpan="2"
                FontSize="25" 
                FontFamily="Times New Roman" 
-               Foreground="#FF898989"/>
+               Foreground="#FF898989"
+               Visibility="Hidden"
+               />
         <Label x:Name="label1" 
                Content="Task" 
                HorizontalAlignment="Left" 
@@ -111,7 +126,8 @@
                Grid.ColumnSpan="2"
                FontSize="25" 
                FontFamily="Times New Roman" 
-               Foreground="#FF898989"/>
+               Foreground="#FF898989"
+               Visibility="Hidden"/>
         <Label x:Name="label2" 
                Content="Description" 
                HorizontalAlignment="Left" 
@@ -120,7 +136,8 @@
                Grid.ColumnSpan="2"
                 FontSize="25" 
                FontFamily="Times New Roman" 
-               Foreground="#FF898989"/>
+               Foreground="#FF898989"
+               Visibility="Hidden"/>
         <Button x:Name="Delete" 
                 Grid.ColumnSpan="2"
                 Content="Delete" 
@@ -205,6 +222,608 @@
             Height="40"
             Visibility="Hidden"
             />
+        <Canvas 
+            Grid.ColumnSpan="2" 
+            HorizontalAlignment="Left" 
+            Height="160" 
+            Margin="608,54,0,0" 
+            VerticalAlignment="Top" 
+            Width="160" OpacityMask="Black" Background="Black"
+           
+            >
+            <Label 
+                x:Name="tack_name" 
+                   Content="tack name"
+                   FontSize="13"
+                   FontWeight="Bold"
+                   Background="#FF70B8E8"
+                   Foreground="White"                
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Top" 
+                   Height="24" 
+                   Width="158" Canvas.Top="1" Canvas.Left="1"/>
+            <Label 
+                x:Name="status" 
+                Content="status" 
+                Background="#FF70B8E8"
+                Foreground="White" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Canvas.Top="135" 
+                Width="158" 
+                Height="25" Canvas.Left="1"/>
+            <TextBlock x:Name="textBlock" 
+                   HorizontalAlignment="Left" 
+                   TextWrapping="Wrap" 
+                   Text="TextBlocfdddddddddddddddddgsk xgdg gs dsfg shdh idsohui ss jhdskvh kjd ikld kjdsn ksdh" 
+                   VerticalAlignment="Top"
+                   Canvas.Top="52" Width="158" Height="83" Background="White" Canvas.Left="1"
+                   />
+            <Label 
+                x:Name="tack" 
+                Content="tack" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Canvas.Top="26" 
+                Background="#FF70B8E8"
+                Foreground="White" Width="158" Height="26" Canvas.Left="1" 
+                />
+        </Canvas>
+        <StackPanel  Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="160" Margin="354,241,-22,0" VerticalAlignment="Top" Width="480">
+            <Canvas 
+                HorizontalAlignment="Left" 
+                Height="160" 
+                VerticalAlignment="Top" 
+                Width="160" OpacityMask="Black" Background="Black"
+           
+            >
+                <Label 
+                    x:Name="tack_name1" 
+                    Content="tack name"
+                    FontSize="13"
+                    FontWeight="Bold"
+                    Background="#FF70B8E8"
+                    Foreground="White"                
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Height="24" 
+                    Width="158" Canvas.Top="1" Canvas.Left="1"/>
+                <Label 
+                    x:Name="status1" 
+                    Content="status" 
+                    Background="#FF70B8E8"
+                    Foreground="White" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Canvas.Top="135" 
+                    Width="158" 
+                    Height="25" Canvas.Left="1"/>
+                <TextBlock x:Name="textBlock1" 
+                    HorizontalAlignment="Left" 
+                    TextWrapping="Wrap" 
+                    Text="TextBlocfdddddddddddddddddgsk xgdg gs dsfg shdh idsohui ss jhdskvh kjd ikld kjdsn ksdh" 
+                    VerticalAlignment="Top"
+                    Canvas.Top="52" Width="158" Height="83" Background="White" Canvas.Left="1"
+                   />
+                <Label 
+                    x:Name="tack1" 
+                    Content="tack" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Canvas.Top="26" 
+                    Background="#FF70B8E8"
+                    Foreground="White" Width="158" Height="26" Canvas.Left="1" 
+                />
+            </Canvas>
+            <Canvas 
+                HorizontalAlignment="Left" 
+                Height="160" 
+                VerticalAlignment="Top" 
+                Width="160" OpacityMask="Black" Background="Black"
+           
+            >
+                <Label 
+                    x:Name="tack_name2" 
+                    Content="tack name"
+                    FontSize="13"
+                    FontWeight="Bold"
+                    Background="#FF70B8E8"
+                    Foreground="White"                
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Height="24" 
+                    Width="158" Canvas.Top="1" Canvas.Left="1"/>
+                <Label 
+                    x:Name="status2" 
+                    Content="status" 
+                    Background="#FF70B8E8"
+                    Foreground="White" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Canvas.Top="135" 
+                    Width="158" 
+                    Height="25" Canvas.Left="1"/>
+                <TextBlock x:Name="textBlock2" 
+                    HorizontalAlignment="Left" 
+                    TextWrapping="Wrap" 
+                    Text="TextBlocfdddddddddddddddddgsk xgdg gs dsfg shdh idsohui ss jhdskvh kjd ikld kjdsn ksdh" 
+                    VerticalAlignment="Top"
+                    Canvas.Top="52" Width="158" Height="83" Background="White" Canvas.Left="1"
+                   />
+                <Label 
+                    x:Name="tack2" 
+                    Content="tack" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Canvas.Top="26" 
+                    Background="#FF70B8E8"
+                    Foreground="White" Width="158" Height="26" Canvas.Left="1" 
+                />
+            </Canvas>
+            <Canvas 
+                HorizontalAlignment="Left" 
+                Height="160" 
+                VerticalAlignment="Top" 
+                Width="160" OpacityMask="Black" Background="Black"
+           
+            >
+                <Label 
+                    x:Name="tack_name3" 
+                    Content="tack name"
+                    FontSize="13"
+                    FontWeight="Bold"
+                    Background="#FF70B8E8"
+                    Foreground="White"                
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Height="24" 
+                    Width="158" Canvas.Top="1" Canvas.Left="1"/>
+                <Label 
+                    x:Name="status3" 
+                    Content="status" 
+                    Background="#FF70B8E8"
+                    Foreground="White" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Canvas.Top="135" 
+                    Width="158" 
+                    Height="25" Canvas.Left="1"/>
+                <TextBlock x:Name="textBlock3" 
+                    HorizontalAlignment="Left" 
+                    TextWrapping="Wrap" 
+                    Text="TextBlocfdddddddddddddddddgsk xgdg gs dsfg shdh idsohui ss jhdskvh kjd ikld kjdsn ksdh" 
+                    VerticalAlignment="Top"
+                    Canvas.Top="52" Width="158" Height="83" Background="White" Canvas.Left="1"
+                   />
+                <Label 
+                    x:Name="tack3" 
+                    Content="tack" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Canvas.Top="26" 
+                    Background="#FF70B8E8"
+                    Foreground="White" Width="158" Height="26" Canvas.Left="1" 
+                />
+            </Canvas>
+        </StackPanel>
+        <ListView x:Name="listView" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="333" Margin="79,240,0,0" VerticalAlignment="Top" Width="520" SelectionChanged="listView_SelectionChanged_2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left" Height="160" VerticalAlignment="Top" Width="480">
+                <Canvas 
+                HorizontalAlignment="Left" 
+                Height="160" 
+                VerticalAlignment="Top" 
+                Width="160" OpacityMask="Black" Background="Black"
+           
+            >
+                    <Label 
+                    x:Name="tack_name7" 
+                    Content="tack name"
+                    FontSize="13"
+                    FontWeight="Bold"
+                    Background="#FF70B8E8"
+                    Foreground="White"                
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Height="24" 
+                    Width="158" Canvas.Top="1" Canvas.Left="1"/>
+                    <Label 
+                    x:Name="status7" 
+                    Content="status" 
+                    Background="#FF70B8E8"
+                    Foreground="White" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Canvas.Top="135" 
+                    Width="158" 
+                    Height="25" Canvas.Left="1"/>
+                    <TextBlock x:Name="textBlock7" 
+                    HorizontalAlignment="Left" 
+                    TextWrapping="Wrap" 
+                    Text="TextBlocfdddddddddddddddddgsk xgdg gs dsfg shdh idsohui ss jhdskvh kjd ikld kjdsn ksdh" 
+                    VerticalAlignment="Top"
+                    Canvas.Top="52" Width="158" Height="83" Background="White" Canvas.Left="1"
+                   />
+                    <Label 
+                    x:Name="tack7" 
+                    Content="tack" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Canvas.Top="26" 
+                    Background="#FF70B8E8"
+                    Foreground="White" Width="158" Height="26" Canvas.Left="1" 
+                />
+                </Canvas>
+                <Canvas 
+                HorizontalAlignment="Left" 
+                Height="160" 
+                VerticalAlignment="Top" 
+                Width="160" OpacityMask="Black" Background="Black"
+           
+            >
+                    <Label 
+                    x:Name="tack_name8" 
+                    Content="tack name"
+                    FontSize="13"
+                    FontWeight="Bold"
+                    Background="#FF70B8E8"
+                    Foreground="White"                
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Height="24" 
+                    Width="158" Canvas.Top="1" Canvas.Left="1"/>
+                    <Label 
+                    x:Name="status8" 
+                    Content="status" 
+                    Background="#FF70B8E8"
+                    Foreground="White" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Canvas.Top="135" 
+                    Width="158" 
+                    Height="25" Canvas.Left="1"/>
+                    <TextBlock x:Name="textBlock8" 
+                    HorizontalAlignment="Left" 
+                    TextWrapping="Wrap" 
+                    Text="TextBlocfdddddddddddddddddgsk xgdg gs dsfg shdh idsohui ss jhdskvh kjd ikld kjdsn ksdh" 
+                    VerticalAlignment="Top"
+                    Canvas.Top="52" Width="158" Height="83" Background="White" Canvas.Left="1"
+                   />
+                    <Label 
+                    x:Name="tack8" 
+                    Content="tack" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Canvas.Top="26" 
+                    Background="#FF70B8E8"
+                    Foreground="White" Width="158" Height="26" Canvas.Left="1" 
+                />
+                </Canvas>
+                <Canvas 
+                HorizontalAlignment="Left" 
+                Height="160" 
+                VerticalAlignment="Top" 
+                Width="160" OpacityMask="Black" Background="Black"
+           
+            >
+                    <Label 
+                    x:Name="tack_name9" 
+                    Content="tack name"
+                    FontSize="13"
+                    FontWeight="Bold"
+                    Background="#FF70B8E8"
+                    Foreground="White"                
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Height="24" 
+                    Width="158" Canvas.Top="1" Canvas.Left="1"/>
+                    <Label 
+                    x:Name="status9" 
+                    Content="status" 
+                    Background="#FF70B8E8"
+                    Foreground="White" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Canvas.Top="135" 
+                    Width="158" 
+                    Height="25" Canvas.Left="1"/>
+                    <TextBlock x:Name="textBlock9" 
+                    HorizontalAlignment="Left" 
+                    TextWrapping="Wrap" 
+                    Text="TextBlocfdddddddddddddddddgsk xgdg gs dsfg shdh idsohui ss jhdskvh kjd ikld kjdsn ksdh" 
+                    VerticalAlignment="Top"
+                    Canvas.Top="52" Width="158" Height="83" Background="White" Canvas.Left="1"
+                   />
+                    <Label 
+                    x:Name="tack9" 
+                    Content="tack" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Canvas.Top="26" 
+                    Background="#FF70B8E8"
+                    Foreground="White" Width="158" Height="26" Canvas.Left="1" 
+                />
+                </Canvas>
+            </StackPanel>
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left" Height="160" VerticalAlignment="Top" Width="480">
+                <Canvas 
+                        HorizontalAlignment="Left" 
+                        Height="160" 
+                        VerticalAlignment="Top" 
+                        Width="160" OpacityMask="Black" Background="Black"
+           
+            >
+                    <Label 
+                            x:Name="tack_name10" 
+                            Content="tack name"
+                            FontSize="13"
+                            FontWeight="Bold"
+                            Background="#FF70B8E8"
+                            Foreground="White"                
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Top" 
+                            Height="24" 
+                            Width="158" Canvas.Top="1" Canvas.Left="1"/>
+                    <Label 
+                            x:Name="status10" 
+                            Content="status" 
+                            Background="#FF70B8E8"
+                            Foreground="White" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Top" 
+                            Canvas.Top="135" 
+                            Width="158" 
+                            Height="25" Canvas.Left="1"/>
+                    <TextBlock x:Name="textBlock10" 
+                            HorizontalAlignment="Left" 
+                            TextWrapping="Wrap" 
+                            Text="TextBlocfdddddddddddddddddgsk xgdg gs dsfg shdh idsohui ss jhdskvh kjd ikld kjdsn ksdh" 
+                            VerticalAlignment="Top"
+                            Canvas.Top="52" Width="158" Height="83" Background="White" Canvas.Left="1"
+                   />
+                    <Label 
+                            x:Name="tack10" 
+                            Content="tack" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Top" 
+                            Canvas.Top="26" 
+                            Background="#FF70B8E8"
+                            Foreground="White" Width="158" Height="26" Canvas.Left="1" 
+                />
+                </Canvas>
+                <Canvas 
+                        HorizontalAlignment="Left" 
+                        Height="160" 
+                        VerticalAlignment="Top" 
+                        Width="160" OpacityMask="Black" Background="Black"
+           
+            >
+                    <Label 
+                            x:Name="tack_name11" 
+                            Content="tack name"
+                            FontSize="13"
+                            FontWeight="Bold"
+                            Background="#FF70B8E8"
+                            Foreground="White"                
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Top" 
+                            Height="24" 
+                            Width="158" Canvas.Top="1" Canvas.Left="1"/>
+                    <Label 
+                            x:Name="status11" 
+                            Content="status" 
+                            Background="#FF70B8E8"
+                            Foreground="White" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Top" 
+                            Canvas.Top="135" 
+                            Width="158" 
+                            Height="25" Canvas.Left="1"/>
+                    <TextBlock x:Name="textBlock11" 
+                            HorizontalAlignment="Left" 
+                            TextWrapping="Wrap" 
+                            Text="TextBlocfdddddddddddddddddgsk xgdg gs dsfg shdh idsohui ss jhdskvh kjd ikld kjdsn ksdh" 
+                            VerticalAlignment="Top"
+                            Canvas.Top="52" Width="158" Height="83" Background="White" Canvas.Left="1"
+                   />
+                    <Label 
+                            x:Name="tack11" 
+                            Content="tack" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Top" 
+                            Canvas.Top="26" 
+                            Background="#FF70B8E8"
+                            Foreground="White" Width="158" Height="26" Canvas.Left="1" 
+                />
+                </Canvas>
+                <Canvas 
+                        HorizontalAlignment="Left" 
+                        Height="160" 
+                        VerticalAlignment="Top" 
+                        Width="160" OpacityMask="Black" Background="Black"
+           
+            >
+                    <Label 
+                            x:Name="tack_name12" 
+                            Content="tack name"
+                            FontSize="13"
+                            FontWeight="Bold"
+                            Background="#FF70B8E8"
+                            Foreground="White"                
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Top" 
+                            Height="24" 
+                            Width="158" Canvas.Top="1" Canvas.Left="1"/>
+                    <Label 
+                            x:Name="status12" 
+                            Content="status" 
+                            Background="#FF70B8E8"
+                            Foreground="White" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Top" 
+                            Canvas.Top="135" 
+                            Width="158" 
+                            Height="25" Canvas.Left="1"/>
+                    <TextBlock x:Name="textBlock12" 
+                            HorizontalAlignment="Left" 
+                            TextWrapping="Wrap" 
+                            Text="TextBlocfdddddddddddddddddgsk xgdg gs dsfg shdh idsohui ss jhdskvh kjd ikld kjdsn ksdh" 
+                            VerticalAlignment="Top"
+                            Canvas.Top="52" Width="158" Height="83" Background="White" Canvas.Left="1"
+                   />
+                    <Label 
+                            x:Name="tack12" 
+                            Content="tack" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Top" 
+                            Canvas.Top="26" 
+                            Background="#FF70B8E8"
+                            Foreground="White" Width="158" Height="26" Canvas.Left="1" 
+                />
+                </Canvas>
+            </StackPanel>
+        </ListView>
+        <StackPanel  Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="160" Margin="354,241,-22,0" VerticalAlignment="Top" Width="480">
+            <Canvas 
+                HorizontalAlignment="Left" 
+                Height="160" 
+                VerticalAlignment="Top" 
+                Width="160" OpacityMask="Black" Background="Black"
+           
+            >
+                <Label 
+                    x:Name="tack_name4" 
+                    Content="tack name"
+                    FontSize="13"
+                    FontWeight="Bold"
+                    Background="#FF70B8E8"
+                    Foreground="White"                
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Height="24" 
+                    Width="158" Canvas.Top="1" Canvas.Left="1"/>
+                <Label 
+                    x:Name="status4" 
+                    Content="status" 
+                    Background="#FF70B8E8"
+                    Foreground="White" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Canvas.Top="135" 
+                    Width="158" 
+                    Height="25" Canvas.Left="1"/>
+                <TextBlock x:Name="textBlock4" 
+                    HorizontalAlignment="Left" 
+                    TextWrapping="Wrap" 
+                    Text="TextBlocfdddddddddddddddddgsk xgdg gs dsfg shdh idsohui ss jhdskvh kjd ikld kjdsn ksdh" 
+                    VerticalAlignment="Top"
+                    Canvas.Top="52" Width="158" Height="83" Background="White" Canvas.Left="1"
+                   />
+                <Label 
+                    x:Name="tack4" 
+                    Content="tack" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Canvas.Top="26" 
+                    Background="#FF70B8E8"
+                    Foreground="White" Width="158" Height="26" Canvas.Left="1" 
+                />
+            </Canvas>
+            <Canvas 
+                HorizontalAlignment="Left" 
+                Height="160" 
+                VerticalAlignment="Top" 
+                Width="160" OpacityMask="Black" Background="Black"
+           
+            >
+                <Label 
+                    x:Name="tack_name5" 
+                    Content="tack name"
+                    FontSize="13"
+                    FontWeight="Bold"
+                    Background="#FF70B8E8"
+                    Foreground="White"                
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Height="24" 
+                    Width="158" Canvas.Top="1" Canvas.Left="1"/>
+                <Label 
+                    x:Name="status5" 
+                    Content="status" 
+                    Background="#FF70B8E8"
+                    Foreground="White" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Canvas.Top="135" 
+                    Width="158" 
+                    Height="25" Canvas.Left="1"/>
+                <TextBlock x:Name="textBlock5" 
+                    HorizontalAlignment="Left" 
+                    TextWrapping="Wrap" 
+                    Text="TextBlocfdddddddddddddddddgsk xgdg gs dsfg shdh idsohui ss jhdskvh kjd ikld kjdsn ksdh" 
+                    VerticalAlignment="Top"
+                    Canvas.Top="52" Width="158" Height="83" Background="White" Canvas.Left="1"
+                   />
+                <Label 
+                    x:Name="tack5" 
+                    Content="tack" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Canvas.Top="26" 
+                    Background="#FF70B8E8"
+                    Foreground="White" Width="158" Height="26" Canvas.Left="1" 
+                />
+            </Canvas>
+            <Canvas 
+                HorizontalAlignment="Left" 
+                Height="160" 
+                VerticalAlignment="Top" 
+                Width="160" OpacityMask="Black" Background="Black"
+           
+            >
+                <Label 
+                    x:Name="tack_name6" 
+                    Content="tack name"
+                    FontSize="13"
+                    FontWeight="Bold"
+                    Background="#FF70B8E8"
+                    Foreground="White"                
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Height="24" 
+                    Width="158" Canvas.Top="1" Canvas.Left="1"/>
+                <Label 
+                    x:Name="status6" 
+                    Content="status" 
+                    Background="#FF70B8E8"
+                    Foreground="White" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Canvas.Top="135" 
+                    Width="158" 
+                    Height="25" Canvas.Left="1"/>
+                <TextBlock x:Name="textBlock6" 
+                    HorizontalAlignment="Left" 
+                    TextWrapping="Wrap" 
+                    Text="TextBlocfdddddddddddddddddgsk xgdg gs dsfg shdh idsohui ss jhdskvh kjd ikld kjdsn ksdh" 
+                    VerticalAlignment="Top"
+                    Canvas.Top="52" Width="158" Height="83" Background="White" Canvas.Left="1"
+                   />
+                <Label 
+                    x:Name="tack6" 
+                    Content="tack" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Canvas.Top="26" 
+                    Background="#FF70B8E8"
+                    Foreground="White" Width="158" Height="26" Canvas.Left="1" 
+                />
+            </Canvas>
+        </StackPanel>
 
     </Grid>
 </Window>
