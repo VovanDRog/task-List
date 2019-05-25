@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,12 +22,108 @@ namespace task_List.Forms
     /// </summary>
     public partial class AdminWindow : Window
     {
+        IFirebaseConfig config = new FirebaseConfig
+        {
+            AuthSecret = "gUXdi6d0iv4C0HBTO66XbMUQdmQ36idwTjlolpqf",
+            BasePath = "https://tasksystem-228.firebaseio.com/"
+        };
+
+        IFirebaseClient _client;
+
+        public class Tasks
+        {
+            public string id { get; set; }
+            public string name { get; set; }
+            public string owner { get; set;  }
+            public string status { get; set; }
+        }
+
+        async void GetAllTasks()
+        {
+            _client = new FireSharp.FirebaseClient(config);
+            int i = 0;
+            bool s = true;
+            FirebaseResponse getResponse = null;
+            List<Tasks> tasks = new List<Tasks>();
+
+            try
+            {
+                while (s)
+                {
+                    try
+                    {
+                        getResponse = await _client.GetAsync("Tasks/" + i);
+                        Tasks result = getResponse.ResultAs<Tasks>();
+                        if (result == null) break;
+                        tasks.Add(result);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        s = false;
+                    }
+                    i++;
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            foreach (var OneTask in tasks)
+            {
+                Border myBorder1 = new Border();
+                // Zadniy fon colir
+                myBorder1.Background = Brushes.Gray;
+                myBorder1.BorderBrush = Brushes.Black;
+                //розмір рамки
+                myBorder1.BorderThickness = new Thickness(2);
+                //Відступи знизу, справа
+                myBorder1.Margin = new Thickness(0, 0, 10, 10);
+
+                Label Name = new Label();
+                Name.Content = OneTask.name;
+                //Name.FontFamily 
+                Name.Foreground = new SolidColorBrush(Colors.Red);
+
+                Label Owner = new Label();
+                Owner.Content = OneTask.owner;
+                Owner.Foreground = new SolidColorBrush(Colors.Blue);
+
+                Label Status = new Label();
+                Status.Content = OneTask.status;
+                Status.Foreground = new SolidColorBrush(Colors.Orange);
+
+                //Дозволяє додавати лейбли один під одним
+                StackPanel st = new StackPanel();
+                st.Orientation = Orientation.Vertical;
+
+                if(OneTask.status != "Zakincheno")
+                {
+                    // TODO :  id, Name, Opys, ToyHtoVykonye, status
+                    st.Children.Add(Name);
+                    st.Children.Add(Owner);
+                    st.Children.Add(Status);
+
+                    if (OneTask.status == "To Do")
+                    {
+                        Button bt = new Button();
+                        //bt.FontFamily
+                        bt.Content = "Добавити до завдань";
+                        st.Children.Add(bt);
+                    }
+                }
+
+                myBorder1.Child = st;
+                wrapPanel1.Children.Add(myBorder1);
+
+            }
+        }
         public AdminWindow()
         {
             InitializeComponent();
-            // var item = new ListViewItem{Text = "Зелений хуй" };
-            // listView.Items.Add();
 
+            GetAllTasks();
         }
 
 
@@ -57,7 +156,6 @@ namespace task_List.Forms
             label.Visibility = Visibility.Visible;
             label1.Visibility = Visibility.Visible;
             label2.Visibility = Visibility.Visible;
-            listView.Visibility = Visibility.Hidden;
 
 
             Name.Text = "";
@@ -86,7 +184,6 @@ namespace task_List.Forms
             label.Visibility = Visibility.Visible;
             label1.Visibility = Visibility.Visible;
             label2.Visibility = Visibility.Visible;
-            listView.Visibility = Visibility.Hidden;
 
             Name.Text = "";
             Task.Text = "";
@@ -113,7 +210,6 @@ namespace task_List.Forms
             label.Visibility = Visibility.Visible;
             label1.Visibility = Visibility.Hidden;
             label2.Visibility = Visibility.Hidden;
-            listView.Visibility = Visibility.Hidden;
 
             Name.Text = "";
             Task.Text = "";
@@ -139,7 +235,6 @@ namespace task_List.Forms
             label1.Visibility = Visibility.Hidden;
             label2.Visibility = Visibility.Hidden;
             Name.Visibility = Visibility.Hidden;
-            listView.Visibility = Visibility.Visible;
 
             Name.Text = "";
             Task.Text = "";
@@ -226,26 +321,6 @@ namespace task_List.Forms
             }
             else
                 Name.Text = "---";
-        }
-
-        private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void listView_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void listView_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

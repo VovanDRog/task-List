@@ -21,7 +21,7 @@ namespace task_List.Forms
         public LoginForm()
         {
             InitializeComponent();
-
+            
             loginErrorLabel.Visibility = passwordErrorLabel.Visibility = Visibility.Hidden;
         }
 
@@ -46,8 +46,8 @@ namespace task_List.Forms
                 try
                 {
                     string[] data = new string [] { loginTextBox.Text, passwordTextBox.Text };
-                    sendToServer(1, data);
 
+                    
                     // TODO 
 
                     // GET response from server
@@ -105,8 +105,9 @@ namespace task_List.Forms
             authForm.ShowDialog();
         }
 
-        private bool sendToServer(int a, string [] data)
+        private int sendToServer(int a, string [] data)
         {
+            int res = -1;
             try
             {
                 byte[] msg = new byte[1024];
@@ -122,17 +123,22 @@ namespace task_List.Forms
                     writer.Flush();
                 }
 
+                res = reader.Read();
+
                 client.Close();
                 writer.Close();
                 reader.Close();
 
-                //return ( Convert.ToBoolean( reader.ReadByte()));
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Oh. We have a error \n\n" + ex);
             }
-            return false;
+
+            if (res != -1)
+                return res;
+            else
+                return -1;
         }
     }
 }

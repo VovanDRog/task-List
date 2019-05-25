@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:task_List.Forms"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="335">
+        Title="MainWindow" Height="433.621" Width="564.412">
     <Grid>
         <Label x:Name="label_user_name" Content="User Name" HorizontalAlignment="Left" Margin="26,30,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Times New Roman"/>
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="100" Margin="10,85,0,0" VerticalAlignment="Top" Width="307" SelectionChanged="listBox_SelectionChanged" FontSize="14" FontFamily="Times New Roman">
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="186" Margin="26,71,0,0" VerticalAlignment="Top" Width="464" SelectionChanged="listBox_SelectionChanged" FontSize="14" FontFamily="Times New Roman">
             <Border
             BorderThickness="1"
             BorderBrush="Black" 
