@@ -140,7 +140,7 @@ namespace task_List.Forms
             }
 
 
-            string pattern = @"^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$";
+           /* string pattern = @"^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$";
             string log = Login.Text;
 
             if (!Regex.IsMatch(log, pattern, RegexOptions.IgnoreCase))
@@ -153,7 +153,7 @@ namespace task_List.Forms
             else
             {
                 loginErrorLabel.Visibility = Visibility.Hidden;
-            }
+            }*/
 
             if (Name.Text == "")
             {
