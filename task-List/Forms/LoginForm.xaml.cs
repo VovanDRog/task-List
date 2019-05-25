@@ -8,7 +8,7 @@ namespace task_List.Forms
 {
     public partial class LoginForm : Window
     {
-        const int PORT = 1556;
+        const int PORT = 8080;
         const string ADDRESS = "127.0.0.1";
         TcpClient client = null;
         static NetworkStream stream = null;
@@ -30,15 +30,29 @@ namespace task_List.Forms
             loginErrorLabel.Visibility = !isLoginСorrect ? Visibility.Visible : Visibility.Hidden;
             passwordErrorLabel.Visibility = !isPasswordСorrect ? Visibility.Visible : Visibility.Hidden;
 
-            client = new TcpClient(ADDRESS, PORT);
-            stream = client.GetStream();
-
+           
             if (loginTextBox.Text != "" && passwordTextBox.Text != "" && isLoginСorrect && isPasswordСorrect)
             {
                 try
                 {
+                    client = new TcpClient(ADDRESS, PORT);
+                    stream = client.GetStream();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("You not connected to server . \n\n\n" + ex.ToString());
+                }
+
+                try
+                {
                     string[] data = new string [] { loginTextBox.Text, passwordTextBox.Text };
-                    inputFromAServer(1, data);
+                    sendToServer(1, data);
+
+                    // TODO 
+
+                    // GET response from server
+                    // if false -> show message 
+                    // if true -> go to main window
                 }
                 catch (Exception ex)
                 {
@@ -91,7 +105,7 @@ namespace task_List.Forms
             authForm.ShowDialog();
         }
 
-        private bool inputFromAServer(int a, string [] data)
+        private bool sendToServer(int a, string [] data)
         {
             try
             {

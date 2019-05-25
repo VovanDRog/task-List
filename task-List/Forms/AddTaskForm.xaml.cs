@@ -8,7 +8,7 @@ namespace task_List.Forms
 {
     public partial class AddForm : Window
     {
-        const int PORT = 1556;
+        const int PORT = 1556; //5500
         const string ADDRESS = "127.0.0.1";
         TcpClient client = null;
         static NetworkStream stream = null;
