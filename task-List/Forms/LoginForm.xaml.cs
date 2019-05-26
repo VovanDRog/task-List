@@ -8,8 +8,6 @@ namespace task_List.Forms
 {
     public partial class LoginForm : Window
     {
-        
-        
 
         bool isLoginСorrect = false;
         bool isPasswordСorrect = false;

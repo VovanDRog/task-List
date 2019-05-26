@@ -54,7 +54,7 @@ namespace task_List.Forms
             bool s = true;
             FirebaseResponse getResponse = null;
             List<Tasks> tasks = new List<Tasks>();
-            
+
             try
             {
                 while (s)
@@ -120,7 +120,7 @@ namespace task_List.Forms
 
                 //if (OneTask.status != "Zakincheno")
                 if (OneTask.status == status)
-                    {
+                {
                     // TODO :  id, Name, Opys, ToyHtoVykonye, status
                     st.Children.Add(Name);
                     st.Children.Add(Owner);
@@ -157,7 +157,7 @@ namespace task_List.Forms
         public MainWindow()
         {
             InitializeComponent();
-            
+
             hiuser.Content = "Hi, " + App.Current.Properties["userLogin"];
             getCompletedTasks();
             getCountActiveTasks();
@@ -177,7 +177,6 @@ namespace task_List.Forms
 
             try
             {
-                
                 while (s)
                 {
                     try
@@ -196,6 +195,7 @@ namespace task_List.Forms
                     }
                     catch (Exception e)
                     {
+                        MessageBox.Show(" Сталась помилка");
                         Console.WriteLine(e.Message);
                         s = false;
                     }
@@ -204,7 +204,7 @@ namespace task_List.Forms
             }
             catch
             {
-
+                MessageBox.Show(" Сталась помилка");
             }
         }
 
@@ -215,28 +215,28 @@ namespace task_List.Forms
 
             FirebaseResponse getAllTasksRequester = null;
             string userID = (string)App.Current.Properties["userID"];
-            
+
             try
             {
-                    try
-                    {
-                        getAllTasksRequester = await _client.GetAsync("Users/" + userID + "/Tasks");
-                        currentTask requesterStatus = getAllTasksRequester.ResultAs<currentTask>();
-                        if (requesterStatus.first != "")
-                            countActiveTasks += 1;
-                        if (requesterStatus.second != "")
-                            countActiveTasks += 1;
-                        if (requesterStatus.third != "")
-                            countActiveTasks += 1;
-                    }
-                    catch (Exception e)
-                    {
-                        
-                    }
+                try
+                {
+                    getAllTasksRequester = await _client.GetAsync("Users/" + userID + "/Tasks");
+                    currentTask requesterStatus = getAllTasksRequester.ResultAs<currentTask>();
+                    if (requesterStatus.first != "")
+                        countActiveTasks += 1;
+                    if (requesterStatus.second != "")
+                        countActiveTasks += 1;
+                    if (requesterStatus.third != "")
+                        countActiveTasks += 1;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(" Сталась помилка");
+                }
             }
             catch
             {
-
+                MessageBox.Show(" Сталась помилка");
             }
             work.Content = "WorkingTask: " + (countActiveTasks).ToString();
         }
@@ -248,32 +248,25 @@ namespace task_List.Forms
             completed.BorderBrush = activetack.BorderBrush = expect.BorderBrush = main.BorderBrush = (Brush)bc.ConvertFrom("#FF70B8E8");
             completed.Background = activetack.Background = expect.Background = main.Background = new SolidColorBrush(Colors.White);
 
-
             scrollViewer.Visibility = Visibility.Visible;
             tack.Foreground = new SolidColorBrush(Colors.White);
             tack.BorderBrush = new SolidColorBrush(Colors.White);
             tack.Background = (Brush)bc.ConvertFrom("#FF70B8E8");
             //scrollViewer.Content = "gfhgnhj,bn";
-            
 
-
-
-                hiuser.Visibility = Visibility.Hidden;
+            hiuser.Visibility = Visibility.Hidden;
             completet.Visibility = Visibility.Hidden;
             work.Visibility = Visibility.Hidden;
             expectt.Visibility = Visibility.Hidden;
 
             string status = "fuck";
             GetAllTasks(status, owner);
-        
-           
         }
 
         private void activetack_Click(object sender, RoutedEventArgs e)
         {
-
             var bc = new BrushConverter();
-            
+
             completed.Foreground = tack.Foreground = expect.Foreground = main.Foreground = (Brush)bc.ConvertFrom("#FF70B8E8");
             completed.BorderBrush = tack.BorderBrush = expect.BorderBrush = main.BorderBrush = (Brush)bc.ConvertFrom("#FF70B8E8");
             completed.Background = tack.Background = expect.Background = main.Background = new SolidColorBrush(Colors.White);
@@ -290,12 +283,10 @@ namespace task_List.Forms
             string owner = "dick";
 
             GetAllTasks(status, owner);
-
         }
 
         private void expect_Click(object sender, RoutedEventArgs e)
         {
-
             var bc = new BrushConverter();
             completed.Foreground = activetack.Foreground = tack.Foreground = main.Foreground = (Brush)bc.ConvertFrom("#FF70B8E8");
             completed.BorderBrush = activetack.BorderBrush = tack.BorderBrush = main.BorderBrush = (Brush)bc.ConvertFrom("#FF70B8E8");
@@ -313,12 +304,10 @@ namespace task_List.Forms
             string owner = "dick";
 
             GetAllTasks(status, owner);
-
         }
 
         private void completed_Click(object sender, RoutedEventArgs e)
         {
-
             var bc = new BrushConverter();
             tack.Foreground = activetack.Foreground = expect.Foreground = main.Foreground = (Brush)bc.ConvertFrom("#FF70B8E8");
             tack.BorderBrush = activetack.BorderBrush = expect.BorderBrush = main.BorderBrush = (Brush)bc.ConvertFrom("#FF70B8E8");
@@ -336,12 +325,10 @@ namespace task_List.Forms
             string owner = "dick";
 
             GetAllTasks(status, owner);
-
         }
 
         private void main_Click(object sender, RoutedEventArgs e)
         {
-
             var bc = new BrushConverter();
             completed.Foreground = activetack.Foreground = expect.Foreground = tack.Foreground = (Brush)bc.ConvertFrom("#FF70B8E8");
             completed.BorderBrush = activetack.BorderBrush = expect.BorderBrush = tack.BorderBrush = (Brush)bc.ConvertFrom("#FF70B8E8");
@@ -356,7 +343,6 @@ namespace task_List.Forms
             main.BorderBrush = new SolidColorBrush(Colors.White);
             main.Background = (Brush)bc.ConvertFrom("#FF70B8E8");
             scrollViewer.Visibility = Visibility.Hidden;
-
         }
     }
 }

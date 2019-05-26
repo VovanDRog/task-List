@@ -28,7 +28,7 @@
             Background="#FF70B8E8" 
             Foreground="White" 
             BorderBrush="White" 
-        />
+        /> 
         <Button
             x:Name="tack"
             Height="44"

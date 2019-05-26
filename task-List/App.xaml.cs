@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Windows;
-using System.IO;
 using System.Net.Sockets;
+using System.Windows;
 
 namespace task_List
 {
@@ -26,7 +21,17 @@ namespace task_List
         
         public static TcpClient getClient()
         {
-            return client = new TcpClient(ADDRESS, PORT); ;
+            if (client == null) {
+                try
+                {
+                    return client = new TcpClient(ADDRESS, PORT);
+                }
+                catch (Exception ex) {
+                    MessageBox.Show("Нажаль, сервер наразі не доступний. Спробуйте ще раз. \n\n\n\n\n" + ex);
+                    return client;
+                }
+            }
+            return client;
         }
 
         public static void closeClient()
@@ -37,7 +42,15 @@ namespace task_List
 
         public static NetworkStream getStream()
         {
-            return stream = client == null ? getClient().GetStream() : client.GetStream();
+            try
+            {
+                return stream = client == null ? getClient().GetStream() : client.GetStream();
+            } 
+            catch (Exception ex)
+            {
+                MessageBox.Show("Нажаль, сервер наразі не доступний. Спробуйте ще раз. \n\n\n\n\n" + ex);
+                return stream;
+            }
         }
 
         public static void closeStream()
