@@ -8,10 +8,8 @@ namespace task_List.Forms
 {
     public partial class LoginForm : Window
     {
-        const int PORT = 8080;
-        const string ADDRESS = "127.0.0.1";
-        TcpClient client = null;
-        static NetworkStream stream = null;
+        
+        
 
         bool isLoginСorrect = false;
         bool isPasswordСorrect = false;
@@ -21,7 +19,11 @@ namespace task_List.Forms
         public LoginForm()
         {
             InitializeComponent();
-            
+
+            App.Current.Properties["id"] = null;
+            App.Current.Properties["login"] = string.Empty;
+            App.Current.Properties["password"] = string.Empty;
+
             loginErrorLabel.Visibility = passwordErrorLabel.Visibility = Visibility.Hidden;
         }
 
@@ -33,30 +35,49 @@ namespace task_List.Forms
            
             if (loginTextBox.Text != "" && passwordTextBox.Text != "" && isLoginСorrect && isPasswordСorrect)
             {
-                try
-                {
-                    client = new TcpClient(ADDRESS, PORT);
-                    stream = client.GetStream();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("You not connected to server . \n\n\n" + ex.ToString());
-                }
+
+                BinaryWriter writer = new BinaryWriter(App.getStream());
+                BinaryReader reader = new BinaryReader(App.getStream());
 
                 try
                 {
-                    string[] data = new string [] { loginTextBox.Text, passwordTextBox.Text };
+                    string login = loginTextBox.Text;
+                    string password = passwordTextBox.Text;
 
-                    
-                    // TODO 
 
-                    // GET response from server
-                    // if false -> show message 
-                    // if true -> go to main window
+                    writer.Write(1);
+                    writer.Flush();
+                    writer.Write(login);
+                    writer.Flush();
+                    writer.Write(password);
+                    writer.Flush();
+
+
+                    var res = reader.Read();
+                    if(res == 1)
+                    {
+                        App.Current.Properties["userID"] = login;
+                        App.Current.Properties["userLogin"] = login;
+                        App.Current.Properties["userPassword"] = password;
+
+                        var form = new MainWindow();
+                        this.Close();
+                        form.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Неправельний логін або пароль");
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Something is wrong. \n\n\n" + ex.ToString());
+                }
+                finally
+                {
+                    writer.Close();
+                    reader.Close();
+                    App.closeClient();
                 }
             }
         }
@@ -110,7 +131,10 @@ namespace task_List.Forms
             int res = -1;
             try
             {
-                byte[] msg = new byte[1024];
+
+                var stream = (NetworkStream) App.Current.Properties["stream"];
+                var client = (TcpClient) App.Current.Properties["client"];
+
                 BinaryWriter writer = new BinaryWriter(stream);
                 BinaryReader reader = new BinaryReader(stream);
 

@@ -101,11 +101,11 @@ namespace task_List.Forms
                 Label Status = new Label();
                 Status.Content = OneTask.status;
                 Status.Foreground = new SolidColorBrush(Colors.Black);
-
+                
                 //Дозволяє додавати лейбли один під одним
                 StackPanel st = new StackPanel();
                 st.Orientation = Orientation.Vertical;
-
+                
                 if(OneTask.status != "Zakincheno")
                 {
                     // TODO :  id, Name, Opys, ToyHtoVykonye, status

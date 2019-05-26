@@ -110,7 +110,7 @@ namespace task_List.Forms
             {
                 try
                 {
-                    TcpClient tcpClient = new TcpClient("127.0.0.1", 8888);
+                    TcpClient tcpClient = new TcpClient("127.0.0.1", 8080);
                     NetworkStream stream = tcpClient.GetStream();
                     string str = "1" + Name.Text + " " + Password1.Text;
                     Byte[] data = System.Text.Encoding.ASCII.GetBytes(str);

@@ -104,7 +104,7 @@
                />
         <Label 
             x:Name="completet" 
-            Content="Comleted tack: 123" 
+            Content="Completed tasks: " 
             HorizontalAlignment="Left" 
             Margin="176,86,0,0" 
             VerticalAlignment="Top"

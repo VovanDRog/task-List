@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Newtonsoft.Json;
 
 namespace task_List.Forms
 {
@@ -29,14 +30,19 @@ namespace task_List.Forms
         };
 
         IFirebaseClient _client;
-        string status;
-        string owner;
+
         public class Tasks
         {
             public string id { get; set; }
             public string name { get; set; }
             public string owner { get; set; }
             public string status { get; set; }
+        }
+        public class currentTask
+        {
+            public string first { get; set; }
+            public string second { get; set; }
+            public string third { get; set; }
         }
 
         async void GetAllTasks(string status, string owner)
@@ -145,13 +151,94 @@ namespace task_List.Forms
 
             }
         }
+
+        private int countTasks { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            
+            hiuser.Content = "Hi, " + App.Current.Properties["userLogin"];
+            getCompletedTasks();
+            getCountActiveTasks();
 
             GetAllTasks(status, owner);
         }
 
+        private async void getCompletedTasks()
+        {
+            _client = new FireSharp.FirebaseClient(config);
+            int i = 0;
+            countTasks = 0;
+            bool s = true;
+            FirebaseResponse getResponseRequester = null;
+            FirebaseResponse getResponseStatus = null;
+            string userName = (string)App.Current.Properties["userLogin"];
+
+            try
+            {
+                
+                while (s)
+                {
+                    try
+                    {
+                        getResponseRequester = await _client.GetAsync("Tasks/" + i + "/requester");
+                        if (getResponseRequester == null) break;
+
+                        string requesterName = getResponseRequester.ResultAs<string>();
+                        if (requesterName == userName)
+                        {
+                            getResponseStatus = await _client.GetAsync("Tasks/" + i + "/status");
+                            string requesterStatus = getResponseStatus.ResultAs<string>();
+                            if (requesterStatus == "To Do")
+                                completet.Content = "Completed tasks: " + (countTasks + 1).ToString();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        s = false;
+                    }
+                    i++;
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private async void getCountActiveTasks()
+        {
+            _client = new FireSharp.FirebaseClient(config);
+            int countActiveTasks = 0;
+
+            FirebaseResponse getAllTasksRequester = null;
+            string userID = (string)App.Current.Properties["userID"];
+            
+            try
+            {
+                    try
+                    {
+                        getAllTasksRequester = await _client.GetAsync("Users/" + userID + "/Tasks");
+                        currentTask requesterStatus = getAllTasksRequester.ResultAs<currentTask>();
+                        if (requesterStatus.first != "")
+                            countActiveTasks += 1;
+                        if (requesterStatus.second != "")
+                            countActiveTasks += 1;
+                        if (requesterStatus.third != "")
+                            countActiveTasks += 1;
+                    }
+                    catch (Exception e)
+                    {
+                        
+                    }
+            }
+            catch
+            {
+
+            }
+            work.Content = "WorkingTask: " + (countActiveTasks).ToString();
+        }
         private void tack_Click(object sender, RoutedEventArgs e)
         {
             //scrollViewer.Content = "";
