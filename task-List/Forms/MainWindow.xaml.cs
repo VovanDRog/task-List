@@ -71,9 +71,12 @@ namespace task_List.Forms
             {
 
             }
+            wrapPanel1.Children.Clear();
 
             foreach (var OneTask in tasks)
             {
+
+
                 Border myBorder1 = new Border();
                 // Zadniy fon colir
                 myBorder1.Background = Brushes.White;
