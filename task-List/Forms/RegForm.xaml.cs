@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -13,53 +14,6 @@ namespace task_List.Forms
         public AuthForm()
         {
             InitializeComponent();
-        }
-
-        private void Login_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-            /*string pattern = @"^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$";
-            string log = Login.Text;
-
-            if (!Regex.IsMatch(log, pattern, RegexOptions.IgnoreCase))
-            {
-                loginErrorLabel.Content = "Login is incorrect";
-                loginErrorLabel.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                loginErrorLabel.Visibility = Visibility.Hidden;
-            }*/
-        }     
-      
-        private void Password1_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            string pattern = @"^[A-Za-z0-9]{5,16}$";
-            string log = Password1.Text;
-
-            if (!Regex.IsMatch(log, pattern, RegexOptions.IgnoreCase))
-            {
-                PasswordErrorLabel.Content = "Incorrect password";
-                PasswordErrorLabel.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                PasswordErrorLabel.Visibility = Visibility.Hidden;
-            }
-
-
-
-            /*
-            if (Password1.Text.Length < 4 || Password1.Text.Length > 10)
-            {
-                PasswordErrorLabel.Content = "Incorrect password length";
-                PasswordErrorLabel.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                PasswordErrorLabel.Visibility = Visibility.Hidden;
-            }*/
-
         }
 
         private void Name_TextChanged(object sender, TextChangedEventArgs e)
@@ -92,49 +46,54 @@ namespace task_List.Forms
 
         private void Password2_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (Password1.Text != Password2.Text)
-            {
-                Password2ErrorLabel.Content = "Passwords do not match";
-                Password2ErrorLabel.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                Password2ErrorLabel.Visibility = Visibility.Hidden;
-            }
-
+            
         } 
 
         private void RegisterButtonSubmitClick(object sender, RoutedEventArgs e)
         {
-            if (Password1.Text.Length < 4 || Password1.Text.Length > 10 && Password1.Text == Password2.Text && Name.Text.Length < 4 || Name.Text.Length > 16)
+            if (Password1.Password.Length > 4 && Password1.Password.Length < 10 && Password1.Password == Password2.Password && Name.Text.Length > 4 && Name.Text.Length < 16)
             {
+                BinaryWriter writer = new BinaryWriter(App.getStream());
+                BinaryReader reader = new BinaryReader(App.getStream());
+
                 try
                 {
-                    TcpClient tcpClient = new TcpClient("127.0.0.1", 8080);
-                    NetworkStream stream = tcpClient.GetStream();
-                    string str = "1" + Name.Text + " " + Password1.Text;
-                    Byte[] data = System.Text.Encoding.ASCII.GetBytes(str);
-                    stream.Write(data, 0, data.Length);
-                    Console.WriteLine("Sent: {0}", str);
+                    string login = Name.Text;
+                    string password = Password1.Password.ToString();
+                    writer.Write(2);
+                    writer.Flush();
+                    writer.Write(login);
+                    writer.Flush();
+                    writer.Write(password);
+                    writer.Flush();
 
-                    // String to store the response ASCII representation.
-                    String responseData = String.Empty;
 
-                    // Read the first batch of the TcpServer response bytes.
-                    Int32 bytes = stream.Read(data, 0, data.Length);
-                    responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
-                    Console.WriteLine("Received: {0}", responseData);
-
-                    if (responseData == "true")
+                    var res = reader.ReadInt32();
+                    switch (res)
                     {
-                        stream.Close();
-                        
-                        this.Close();
-                    } 
+                        case 1:
+                            MessageBox.Show("Ви успішно зареєструвалися");
+                            Name.Clear();
+                            Password1.Clear();
+                            Password2.Clear();
+                            break;
+                        case 2:
+                            MessageBox.Show("Користувач з таким логіном вже існує");
+                            break;
+                        case 0:
+                            MessageBox.Show("Сталася помилка на сервері");
+                            break;
+                    }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Something is wrong. \n\n\n" + ex.ToString());
+                }
+                finally
+                {
+                    writer.Close();
+                    reader.Close();
+                    App.closeClient();
                 }
             }
 
@@ -144,16 +103,52 @@ namespace task_List.Forms
                 NameErrorLabel.Visibility = Visibility.Visible;
             }
            
-            if(Password1.Text == "")
+            if(Password1.Password.ToString() == "")
             {
                 PasswordErrorLabel.Content = "Password is empty";
                 PasswordErrorLabel.Visibility = Visibility.Visible;
             }
 
-            if (Password2.Text == "")
+            if (Password2.Password.ToString() == "")
             {
                 Password2ErrorLabel.Content = "Password is empty";
                 Password2ErrorLabel.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void LoginButtonSubmitClick(object sender, RoutedEventArgs e)
+        {
+            var form = new LoginForm();
+            this.Close();
+            form.Show();
+        }
+
+        private void Password2_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (Password1.Password != Password2.Password)
+            {
+                Password2ErrorLabel.Content = "Passwords do not match";
+                Password2ErrorLabel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Password2ErrorLabel.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void Password1_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            string pattern = @"^[A-Za-z0-9]{5,16}$";
+            string log = Password1.Password;
+
+            if (!Regex.IsMatch(log, pattern, RegexOptions.IgnoreCase))
+            {
+                PasswordErrorLabel.Content = "Incorrect password";
+                PasswordErrorLabel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                PasswordErrorLabel.Visibility = Visibility.Hidden;
             }
         }
     }

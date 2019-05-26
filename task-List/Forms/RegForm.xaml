@@ -25,31 +25,29 @@
 
             TextChanged="Name_TextChanged"
             />
-        <TextBox 
+        <PasswordBox 
             x:Name="Password1" 
-            HorizontalAlignment="Left" 
+            HorizontalAlignment="Left"
+            PasswordChar="*"
             Height="50" 
             Margin="160,198,0,0" 
-            TextWrapping="Wrap" 
-            Text="" 
             VerticalAlignment="Top" 
             Width="228" 
             FontSize="30" 
             FontFamily="Times New Roman"
-            TextChanged="Password1_TextChanged"
+            PasswordChanged="Password1_PasswordChanged"
             />
-        <TextBox 
+        <PasswordBox 
             x:Name="Password2" 
+            PasswordChar="*"
             HorizontalAlignment="Left" 
             Height="50" 
-            Margin="160,282,0,0" 
-            TextWrapping="Wrap" 
-            Text="" 
+            Margin="160,282,0,0"
             VerticalAlignment="Top" 
             Width="228" 
             FontSize="30" 
             FontFamily="Times New Roman"
-            TextChanged="Password2_TextChanged"
+            PasswordChanged="Password2_PasswordChanged"
             />
         <Label 
             x:Name="loginErrorLabel" 
@@ -103,11 +101,10 @@
             FontSize="16"
             Visibility="Hidden"
         />
-
         <Button 
             x:Name="RegisterButton" 
             Content="Register" 
-            Margin="146,414,146,0" 
+            Margin="46,414,246,0" 
             VerticalAlignment="Top" 
             Click="RegisterButtonSubmitClick" 
             Height="42"
@@ -115,7 +112,17 @@
             FontSize="22" 
             FontWeight="Bold" Background="#FF70B8E8" Foreground="White" BorderBrush="White" 
             />
-
+        <Button 
+            x:Name="Login" 
+            Content="Login" 
+            Margin="236,414,10,0" 
+            VerticalAlignment="Top" 
+            Click="LoginButtonSubmitClick" 
+            Height="42"
+            FontFamily="Times New Roman"
+            FontSize="22" 
+            FontWeight="Bold" Background="#FF70B8E8" Foreground="White" BorderBrush="White" 
+            />
 
         <Label 
             x:Name="name_l" 

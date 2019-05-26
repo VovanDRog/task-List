@@ -35,7 +35,7 @@
             Margin="0,76,386,0"
             VerticalAlignment="Top"
             Click="tack_Click"
-            Content="Tack"
+            Content="Task"
             FontFamily="Times New Roman"
             FontSize="22" 
             FontWeight="Light" 
@@ -50,7 +50,7 @@
             Margin="0,120,386,0"
             VerticalAlignment="Top"
             Click="activetack_Click"
-            Content="Active Tack"
+            Content="Active Task"
             FontFamily="Times New Roman"
             FontSize="22" 
             FontWeight="Light" 
@@ -104,7 +104,7 @@
                />
         <Label 
             x:Name="completet" 
-            Content="Completed tasks: " 
+            Content="Completed: " 
             HorizontalAlignment="Left" 
             Margin="176,86,0,0" 
             VerticalAlignment="Top"
@@ -114,7 +114,7 @@
             />
         <Label 
             x:Name="work" 
-               Content="Tack in work: 3"
+               Content="Active:"
                HorizontalAlignment="Left" 
                Margin="176,130,0,0" 
                VerticalAlignment="Top"
@@ -124,7 +124,7 @@
                />
         <Label 
             x:Name="expectt" 
-               Content="Expect: 3" 
+               Content="Expect:" 
             HorizontalAlignment="Left" 
             Margin="176,174,0,0" 
             VerticalAlignment="Top"

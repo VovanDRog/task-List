@@ -8,9 +8,6 @@ namespace task_List.Forms
 {
     public partial class LoginForm : Window
     {
-        
-        
-
         bool isLoginСorrect = false;
         bool isPasswordСorrect = false;
 
@@ -61,6 +58,16 @@ namespace task_List.Forms
                         App.Current.Properties["userPassword"] = password;
 
                         var form = new MainWindow();
+                        this.Close();
+                        form.Show();
+                    }
+                    else if (res == 2)
+                    {
+                        App.Current.Properties["userID"] = login;
+                        App.Current.Properties["userLogin"] = login;
+                        App.Current.Properties["userPassword"] = password;
+
+                        var form = new AdminWindow();
                         this.Close();
                         form.Show();
                     }
@@ -123,7 +130,8 @@ namespace task_List.Forms
         private void buttonRegister_Click(object sender, RoutedEventArgs e)
         {
             authForm = new AuthForm();
-            authForm.ShowDialog();
+            this.Close();
+            authForm.Show();
         }
 
         private int sendToServer(int a, string [] data)

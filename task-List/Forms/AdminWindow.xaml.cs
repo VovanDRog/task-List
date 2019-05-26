@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace task_List.Forms
 {
@@ -34,7 +35,8 @@ namespace task_List.Forms
         {
             public string id { get; set; }
             public string name { get; set; }
-            public string owner { get; set;  }
+            public string owner { get; set; }
+            public string requester { get; set; }
             public string status { get; set; }
         }
 
@@ -86,14 +88,11 @@ namespace task_List.Forms
                 //Name.FontFamily 
 
                 var bc = new BrushConverter();
-                Name.Background = (Brush)bc.ConvertFrom("#FF70B8E8");                
+                Name.Background = (Brush)bc.ConvertFrom("#FF70B8E8");
                 Name.Foreground = new SolidColorBrush(Colors.White);
 
-                //Name.Foreground = new SolidColorBrush(Colors.);
-
                 Label Owner = new Label();
-                Owner.Content = OneTask.owner;
-                //var bc = new BrushConverter();
+                Owner.Content = OneTask.requester;
                 Owner.Margin = new Thickness(0, 1, 0, 0);
                 Owner.Background = (Brush)bc.ConvertFrom("#FF70B8E8");
                 Owner.Foreground = new SolidColorBrush(Colors.White);
@@ -101,12 +100,12 @@ namespace task_List.Forms
                 Label Status = new Label();
                 Status.Content = OneTask.status;
                 Status.Foreground = new SolidColorBrush(Colors.Black);
-                
+
                 //Дозволяє додавати лейбли один під одним
                 StackPanel st = new StackPanel();
                 st.Orientation = Orientation.Vertical;
-                
-                if(OneTask.status != "Zakincheno")
+
+                if (OneTask.status != "Zakincheno")
                 {
                     // TODO :  id, Name, Opys, ToyHtoVykonye, status
                     st.Children.Add(Name);
@@ -116,13 +115,13 @@ namespace task_List.Forms
                     if (OneTask.status == "work")
                     {
                         Button bt = new Button();
-                       // bt.FontWeight =
+                        // bt.FontWeight =
 
-                            bt.FontWeight = FontWeights.UltraBold;
-                        
+                        bt.FontWeight = FontWeights.UltraBold;
+
                         //bt.FontWeight  =
                         bt.Background = (Brush)bc.ConvertFrom("#FF70B8E8");
-                        
+
                         bt.Foreground = new SolidColorBrush(Colors.White);
                         bt.BorderBrush = new SolidColorBrush(Colors.White);
 
@@ -137,11 +136,154 @@ namespace task_List.Forms
 
             }
         }
+        async void GetAllTasksForAccept()
+        {
+            _client = new FireSharp.FirebaseClient(config);
+            int i = 0;
+            bool s = true;
+            FirebaseResponse getResponse = null;
+            List<Tasks> tasks = new List<Tasks>();
+
+            try
+            {
+                while (s)
+                {
+                    try
+                    {
+                        getResponse = await _client.GetAsync("Tasks/" + i);
+                        Tasks result = getResponse.ResultAs<Tasks>();
+                        if (result == null) break;
+                        if (result.status == "Resolved")
+                            tasks.Add(result);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        s = false;
+                    }
+                    i++;
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            wrapPanel1.Children.Clear();
+
+            foreach (var OneTask in tasks)
+            {
+                Border myBorder1 = new Border();
+                myBorder1.Background = Brushes.White;
+                myBorder1.BorderBrush = Brushes.Black;
+                myBorder1.BorderThickness = new Thickness(1);
+                myBorder1.Margin = new Thickness(0, 0, 10, 10);
+
+                Label Name = new Label();
+                Name.Content = OneTask.name;
+
+                var bc = new BrushConverter();
+                Name.Background = (Brush)bc.ConvertFrom("#FF70B8E8");
+                Name.Foreground = new SolidColorBrush(Colors.White);
+
+                Label Owner = new Label();
+                Owner.Content = OneTask.requester;
+                Owner.Margin = new Thickness(0, 1, 0, 0);
+                Owner.Background = (Brush)bc.ConvertFrom("#FF70B8E8");
+                Owner.Foreground = new SolidColorBrush(Colors.White);
+
+                Label Status = new Label();
+                Status.Content = OneTask.status;
+                Status.Foreground = new SolidColorBrush(Colors.Black);
+
+                StackPanel st = new StackPanel();
+                st.Orientation = Orientation.Vertical;
+
+                st.Children.Add(Name);
+                st.Children.Add(Owner);
+                st.Children.Add(Status);
+
+                //AcceptTask
+                Button AcceptTask = new Button();
+                AcceptTask.FontWeight = FontWeights.UltraBold;
+                AcceptTask.Background = (Brush)bc.ConvertFrom("#FF70B8E8");
+                AcceptTask.Foreground = new SolidColorBrush(Colors.White);
+                AcceptTask.BorderBrush = new SolidColorBrush(Colors.White);
+                AcceptTask.Tag = OneTask.id + " " + OneTask.requester;
+                AcceptTask.Click += new RoutedEventHandler(AcceptTask_Click);
+                AcceptTask.Content = "Підтвердити";
+                //AcceptTask
+
+                //CanceledTask
+                Button CanceledTask = new Button();
+                CanceledTask.FontWeight = FontWeights.UltraBold;
+                CanceledTask.Background = (Brush)bc.ConvertFrom("#FF70B8E8");
+                CanceledTask.Foreground = new SolidColorBrush(Colors.White);
+                CanceledTask.BorderBrush = new SolidColorBrush(Colors.White);
+                CanceledTask.Content = "Скасувати";
+                //CanceledTask
+
+
+                st.Children.Add(AcceptTask);
+                st.Children.Add(CanceledTask);
+
+                myBorder1.Child = st;
+                wrapPanel1.Children.Add(myBorder1);
+
+            }
+        }
+
+        private void AcceptTask_Click(object sender, RoutedEventArgs e)
+        {
+            BinaryWriter writer = new BinaryWriter(App.getStream());
+            BinaryReader reader = new BinaryReader(App.getStream());
+
+            try
+            {
+                string tag = (string)((Button)sender).Tag;
+
+                string[] subStrings = tag.Split(' ');
+
+                string userId = subStrings[1];
+                string taskId = subStrings[0];
+
+                writer.Write(9);
+                writer.Flush();
+                writer.Write(userId);
+                writer.Flush();
+                writer.Write(taskId);
+                writer.Flush();
+
+                int resultFromServer = (int)reader.Read();
+                if (resultFromServer == 1)
+                {
+                    MessageBox.Show("Завдання закрито");
+                    GetAllTasksForAccept();
+                }
+                else
+                {
+                    MessageBox.Show("помилка на сервері");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something is wrong. \n\n\n" + ex.ToString());
+            }
+            finally
+            {
+                writer.Close();
+                reader.Close();
+                App.closeClient();
+            }
+
+            GetAllTasksForAccept();
+        }
+
         public AdminWindow()
         {
             InitializeComponent();
 
-            GetAllTasks();
+            GetAllTasksForAccept();
         }
 
 
