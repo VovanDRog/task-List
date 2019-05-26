@@ -30,7 +30,8 @@ namespace task_List.Forms
         };
 
         IFirebaseClient _client;
-
+        string status;
+        string owner;
         public class Tasks
         {
             public string id { get; set; }
