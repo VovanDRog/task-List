@@ -28,7 +28,7 @@
             Background="#FF70B8E8" 
             Foreground="White" 
             BorderBrush="White" 
-        /> 
+        />
         <Button
             x:Name="tack"
             Height="44"
@@ -91,11 +91,11 @@
         />
         <Label x:Name="hiuser" 
                Content="Hi User" 
-               HorizontalAlignment="Left" 
-               Margin="188,30,0,0" 
+               HorizontalAlignment="Right" 
+               Margin="0,30,10,0" 
                VerticalAlignment="Top"
                Height="39" 
-               Width="119"
+               Width="344"
                FontStyle="Italic"
                FontWeight="SemiBold"
                FontSize="25"
@@ -105,33 +105,33 @@
         <Label 
             x:Name="completet" 
             Content="Completed tasks: " 
-            HorizontalAlignment="Left" 
-            Margin="176,86,0,0" 
+            HorizontalAlignment="Right" 
+            Margin="0,86,10,0" 
             VerticalAlignment="Top"
             FontStyle="Italic"
             FontSize="18"
-            Foreground="#FF70B8E8"   
+            Foreground="#FF70B8E8" Width="344"   
             />
         <Label 
             x:Name="work" 
                Content="Tack in work: 3"
-               HorizontalAlignment="Left" 
-               Margin="176,130,0,0" 
+               HorizontalAlignment="Right" 
+               Margin="0,130,10,0" 
                VerticalAlignment="Top"
                FontStyle="Italic"
             FontSize="18"
-            Foreground="#FF70B8E8"  
+            Foreground="#FF70B8E8" Width="344"  
                />
         <Label 
             x:Name="expectt" 
                Content="Expect: 3" 
-            HorizontalAlignment="Left" 
-            Margin="176,174,0,0" 
+            HorizontalAlignment="Right" 
+            Margin="0,174,10,0" 
             VerticalAlignment="Top"
             
                         FontStyle="Italic"
             FontSize="18"
-            Foreground="#FF70B8E8"  
+            Foreground="#FF70B8E8" Width="344"  
             />
 
         <ScrollViewer Name="scrollViewer" Margin="159,45,32,42" Visibility="Hidden">

@@ -8,10 +8,10 @@
         Title="AddForm" Height="420.58" Width="507.097">
     <Grid Margin="0,0,2,14">
         <TextBox x:Name="Name" 
-                 HorizontalAlignment="Left" 
+                 HorizontalAlignment="Right" 
                  Height="50" 
                  Width="228"
-                 Margin="186,20,0,0" 
+                 Margin="0,20,83,0" 
                  TextWrapping="Wrap" 
                  Text="" 
                  VerticalAlignment="Top"                  
@@ -30,11 +30,11 @@
             FontSize="16"  
             Visibility="Hidden"
         />
-        
+
         <TextBox x:Name="Task" 
-                 HorizontalAlignment="Left" 
+                 HorizontalAlignment="Right" 
                  Height="50" 
-                 Margin="186,104,0,0" 
+                 Margin="0,104,83,0" 
                  TextWrapping="Wrap" 
                  Text="" 
                  VerticalAlignment="Top" 
@@ -57,9 +57,9 @@
         />
 
         <TextBox x:Name="Description" 
-                 HorizontalAlignment="Left" 
+                 HorizontalAlignment="Right" 
                  Height="100" 
-                 Margin="186,188,0,0" 
+                 Margin="0,188,83,0" 
                  TextWrapping="Wrap"
                  Text="" 
                  VerticalAlignment="Top" 
@@ -80,15 +80,15 @@
             Visibility="Hidden"
             />
 
-        
+
 
         <Label x:Name="NameTasklabel" 
                Content="Name" 
                FontSize="30" 
                FontFamily="Times New Roman"
                Foreground="#FFBFB3B3" 
-               HorizontalAlignment="Left"
-               Margin="10,20,0,0"
+               HorizontalAlignment="Right"
+               Margin="0,20,405,0"
                VerticalAlignment="Top"/>
 
         <Label x:Name="Tasklabel" 
@@ -96,8 +96,8 @@
                FontSize="30" 
                FontFamily="Times New Roman"
                Foreground="#FFBFB3B3" 
-               HorizontalAlignment="Left" 
-               Margin="10,104,0,0" 
+               HorizontalAlignment="Right" 
+               Margin="0,104,421,0" 
                VerticalAlignment="Top"/>
 
         <Label x:Name="Descriptionlabel" 
@@ -105,10 +105,10 @@
                FontSize="30" 
                FontFamily="Times New Roman"
                Foreground="#FFBFB3B3" 
-               HorizontalAlignment="Left" 
-               Margin="10,188,0,0" 
+               HorizontalAlignment="Right" 
+               Margin="0,188,337,0" 
                VerticalAlignment="Top"/>
-        
+
         <Button x:Name="Add" 
                 Content="Add" 
             Margin="148,322,145,0" 

@@ -195,7 +195,7 @@ namespace task_List.Forms
                     }
                     catch (Exception e)
                     {
-                        MessageBox.Show(" Сталась помилка");
+                        MessageBox.Show("Сталась помилка");
                         Console.WriteLine(e.Message);
                         s = false;
                     }
@@ -231,7 +231,7 @@ namespace task_List.Forms
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(" Сталась помилка");
+                    MessageBox.Show(" У вас немає активних завдань!!!");
                 }
             }
             catch
