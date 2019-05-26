@@ -6,8 +6,8 @@
     xmlns:local="clr-namespace:task_List.Forms"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="AdminWindow"
-    Width="822.318"
-    Height="697.682"
+    Width="720.318"
+    Height="405.682"
     mc:Ignorable="d">
     <Grid Margin="0,0,2,17" >
         <Grid.ColumnDefinitions>
@@ -223,7 +223,7 @@
             Visibility="Hidden"
             />
 
-        <ScrollViewer Grid.ColumnSpan="2" Margin="142,45,32,290">
+        <ScrollViewer Name="scrollViewer" Grid.ColumnSpan="2" Margin="42,45,32,42">
             <WrapPanel  Name="wrapPanel1" ItemWidth="Auto" ItemHeight="Auto" />
         </ScrollViewer>
     </Grid>

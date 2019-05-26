@@ -74,25 +74,33 @@ namespace task_List.Forms
             {
                 Border myBorder1 = new Border();
                 // Zadniy fon colir
-                myBorder1.Background = Brushes.Gray;
+                myBorder1.Background = Brushes.White;
                 myBorder1.BorderBrush = Brushes.Black;
                 //розмір рамки
-                myBorder1.BorderThickness = new Thickness(2);
+                myBorder1.BorderThickness = new Thickness(1);
                 //Відступи знизу, справа
                 myBorder1.Margin = new Thickness(0, 0, 10, 10);
 
                 Label Name = new Label();
                 Name.Content = OneTask.name;
                 //Name.FontFamily 
-                Name.Foreground = new SolidColorBrush(Colors.Red);
+
+                var bc = new BrushConverter();
+                Name.Background = (Brush)bc.ConvertFrom("#FF70B8E8");                
+                Name.Foreground = new SolidColorBrush(Colors.White);
+
+                //Name.Foreground = new SolidColorBrush(Colors.);
 
                 Label Owner = new Label();
                 Owner.Content = OneTask.owner;
-                Owner.Foreground = new SolidColorBrush(Colors.Blue);
+                //var bc = new BrushConverter();
+                Owner.Margin = new Thickness(0, 1, 0, 0);
+                Owner.Background = (Brush)bc.ConvertFrom("#FF70B8E8");
+                Owner.Foreground = new SolidColorBrush(Colors.White);
 
                 Label Status = new Label();
                 Status.Content = OneTask.status;
-                Status.Foreground = new SolidColorBrush(Colors.Orange);
+                Status.Foreground = new SolidColorBrush(Colors.Black);
 
                 //Дозволяє додавати лейбли один під одним
                 StackPanel st = new StackPanel();
@@ -105,10 +113,20 @@ namespace task_List.Forms
                     st.Children.Add(Owner);
                     st.Children.Add(Status);
 
-                    if (OneTask.status == "To Do")
+                    if (OneTask.status == "work")
                     {
                         Button bt = new Button();
-                        //bt.FontFamily
+                       // bt.FontWeight =
+
+                            bt.FontWeight = FontWeights.UltraBold;
+                        
+                        //bt.FontWeight  =
+                        bt.Background = (Brush)bc.ConvertFrom("#FF70B8E8");
+                        
+                        bt.Foreground = new SolidColorBrush(Colors.White);
+                        bt.BorderBrush = new SolidColorBrush(Colors.White);
+
+
                         bt.Content = "Добавити до завдань";
                         st.Children.Add(bt);
                     }
@@ -156,7 +174,7 @@ namespace task_List.Forms
             label.Visibility = Visibility.Visible;
             label1.Visibility = Visibility.Visible;
             label2.Visibility = Visibility.Visible;
-
+            scrollViewer.Visibility = Visibility.Hidden;
 
             Name.Text = "";
             Task.Text = "";
@@ -184,6 +202,7 @@ namespace task_List.Forms
             label.Visibility = Visibility.Visible;
             label1.Visibility = Visibility.Visible;
             label2.Visibility = Visibility.Visible;
+            scrollViewer.Visibility = Visibility.Hidden;
 
             Name.Text = "";
             Task.Text = "";
@@ -210,6 +229,7 @@ namespace task_List.Forms
             label.Visibility = Visibility.Visible;
             label1.Visibility = Visibility.Hidden;
             label2.Visibility = Visibility.Hidden;
+            scrollViewer.Visibility = Visibility.Hidden;
 
             Name.Text = "";
             Task.Text = "";
@@ -235,6 +255,7 @@ namespace task_List.Forms
             label1.Visibility = Visibility.Hidden;
             label2.Visibility = Visibility.Hidden;
             Name.Visibility = Visibility.Hidden;
+            scrollViewer.Visibility = Visibility.Visible;
 
             Name.Text = "";
             Task.Text = "";
@@ -242,8 +263,8 @@ namespace task_List.Forms
             errordescription.Visibility = Visibility.Hidden;
             errorname.Visibility = Visibility.Hidden;
             errortask.Visibility = Visibility.Hidden;
-            this.Width = 822;
-            this.Height = 697;
+            this.Width = 720.818;
+            this.Height = 405.682;
 
         }
         private void Name_TextChanged(object sender, TextChangedEventArgs e)
